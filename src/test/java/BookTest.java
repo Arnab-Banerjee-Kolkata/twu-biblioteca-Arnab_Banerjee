@@ -9,7 +9,7 @@ class BookTest {
 
         String title = book.getTitle();
         String author = book.getAuthor();
-        int yearOfPublishing = book.getYearOfpublishing();
+        int yearOfPublishing = book.getYearOfPublishing();
 
         assertEquals("Book_Name", title);
         assertEquals("Author_Name", author);

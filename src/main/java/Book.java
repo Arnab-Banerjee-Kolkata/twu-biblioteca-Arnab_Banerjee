@@ -20,7 +20,7 @@ public class Book {
         return this.author;
     }
 
-    public int getYearOfpublishing() {
+    public int getYearOfPublishing() {
         return this.yearOfPublishing;
     }
 }
