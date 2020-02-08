@@ -38,11 +38,13 @@ class BibliotecaAppTest {
     void shouldShowListOfBooksWithTitleAuthorAndPublishedYear() {
         Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
         Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
-        String expectedBooks = book1.getTitle() + " " + book1.getAuthor() + " " + book1.getYearOfPublishing() + "\n" +
-                book2.getTitle() + " " + book2.getAuthor() + " " + book2.getYearOfPublishing();
+        String expectedBooks = book1.getTitle() + "\n" + book2.getTitle();
+        String expectedDetails = "Book_Name_2 Author_Name_2 1987";
 
         String actualBooks = bibliotecaApp.showBooks();
+        String actualDetails = book2.getDetails();
 
         assertEquals(expectedBooks, actualBooks);
+        assertEquals(expectedDetails, actualDetails);
     }
 }
