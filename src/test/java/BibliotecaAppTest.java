@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class BibliotecaAppTest {
     BibliotecaApp bibliotecaApp;
@@ -37,5 +39,10 @@ class BibliotecaAppTest {
                 " Your one-stop-shop for great book titles in Bangalore!", welcomeMessage);
         assertEquals(expectedBooks, actualBooks);
 
+    }
+
+    @Test
+    void shouldShowListOfBooksWithTitleAuthorAndPublishedYear() {
+        Book book1 = mock(Book.class);
     }
 }
