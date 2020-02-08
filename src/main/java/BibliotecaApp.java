@@ -19,12 +19,12 @@ public class BibliotecaApp {
         return "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
     }
 
-    public String showBooks() {
-        StringBuilder bookTitles = new StringBuilder();
+    public List<String> showBooks() {
+        List<String> bookTitles = new ArrayList<>();
         for (Book book : books) {
-            bookTitles.append(book.getTitle()).append("\n");
+            bookTitles.add(book.getTitle());
         }
-        return bookTitles.toString().trim();
+        return bookTitles;
     }
 
 }

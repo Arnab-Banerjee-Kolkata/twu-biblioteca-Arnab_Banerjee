@@ -1,6 +1,10 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BibliotecaAppTest {
@@ -23,10 +27,10 @@ class BibliotecaAppTest {
     void shouldShowAListOfAvailableBooksAfterDisplayingWelcomeMessage() {
         Book book1 = new Book("Book_Name_1", null, 0);
         Book book2 = new Book("Book_Name_2", null, 0);
-        String expectedBooks = book1.getTitle() + "\n" + book2.getTitle();
+        List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getTitle(), book2.getTitle()));
 
         String welcomeMessage = bibliotecaApp.showWelcomeMessage();
-        String actualBooks = bibliotecaApp.showBooks();
+        List<String> actualBooks = bibliotecaApp.showBooks();
 
         assertEquals("Welcome to Biblioteca." +
                 " Your one-stop-shop for great book titles in Bangalore!", welcomeMessage);
@@ -38,10 +42,10 @@ class BibliotecaAppTest {
     void shouldShowListOfBooksWithTitleAuthorAndPublishedYear() {
         Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
         Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
-        String expectedBooks = book1.getTitle() + "\n" + book2.getTitle();
         String expectedDetails = "Book_Name_2 Author_Name_2 1987";
+        List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getTitle(), book2.getTitle()));
 
-        String actualBooks = bibliotecaApp.showBooks();
+        List<String> actualBooks = bibliotecaApp.showBooks();
         String actualDetails = book2.getDetails();
 
         assertEquals(expectedBooks, actualBooks);
