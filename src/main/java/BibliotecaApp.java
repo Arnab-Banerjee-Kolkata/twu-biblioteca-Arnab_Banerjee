@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class BibliotecaApp {
 
@@ -20,27 +19,13 @@ public class BibliotecaApp {
         return "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
     }
 
-    public List<Book> showBooks() {
-        return this.books;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BibliotecaApp that = (BibliotecaApp) o;
-        boolean isSame = true;
-        for (int a = 0; a < books.size(); a++) {
-            if (!books.get(a).equals(that.books.get(a))) {
-                isSame = false;
-                break;
-            }
+    public String showBooks() {
+        StringBuilder bookDetails = new StringBuilder();
+        for (Book book : books) {
+            bookDetails.append(book.getTitle()).append(" ").append(book.getAuthor()).append(" ").
+                    append(book.getYearOfPublishing()).append("\n");
         }
-        return isSame;
+        return bookDetails.toString().trim();
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(books);
-    }
 }

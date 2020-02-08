@@ -27,10 +27,11 @@ class BibliotecaAppTest {
     void shouldShowAListOfAvailableBooksAfterDisplayingWelcomeMessage() {
         Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
         Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
-        List<Book> expectedBooks = new ArrayList<>(Arrays.asList(book1, book2));
+        String expectedBooks = book1.getTitle() + " " + book1.getAuthor() + " " + book1.getYearOfPublishing() + "\n" +
+                book2.getTitle() + " " + book2.getAuthor() + " " + book2.getYearOfPublishing();
 
         String welcomeMessage = bibliotecaApp.showWelcomeMessage();
-        List<Book> actualBooks = bibliotecaApp.showBooks();
+        String actualBooks = bibliotecaApp.showBooks();
 
         assertEquals("Welcome to Biblioteca." +
                 " Your one-stop-shop for great book titles in Bangalore!", welcomeMessage);
@@ -42,9 +43,10 @@ class BibliotecaAppTest {
     void shouldShowListOfBooksWithTitleAuthorAndPublishedYear() {
         Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
         Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
-        List<Book> expectedBooks = new ArrayList<>(Arrays.asList(book1, book2));
+        String expectedBooks = book1.getTitle() + " " + book1.getAuthor() + " " + book1.getYearOfPublishing() + "\n" +
+                book2.getTitle() + " " + book2.getAuthor() + " " + book2.getYearOfPublishing();
 
-        List<Book> actualBooks = bibliotecaApp.showBooks();
+        String actualBooks = bibliotecaApp.showBooks();
 
         assertEquals(expectedBooks, actualBooks);
     }
