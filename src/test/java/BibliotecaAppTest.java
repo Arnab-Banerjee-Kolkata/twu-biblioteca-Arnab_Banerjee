@@ -6,8 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class BibliotecaAppTest {
     BibliotecaApp bibliotecaApp;
@@ -27,13 +25,12 @@ class BibliotecaAppTest {
 
     @Test
     void shouldShowAListOfAvailableBooksAfterDisplayingWelcomeMessage() {
-        List<String> expectedBooks = new ArrayList<>(Arrays.asList(
-                "Book_Name_1",
-                "Book_Name_2"
-        ));
+        Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
+        Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
+        List<Book> expectedBooks = new ArrayList<>(Arrays.asList(book1, book2));
 
         String welcomeMessage = bibliotecaApp.showWelcomeMessage();
-        List<String> actualBooks = bibliotecaApp.showBooks();
+        List<Book> actualBooks = bibliotecaApp.showBooks();
 
         assertEquals("Welcome to Biblioteca." +
                 " Your one-stop-shop for great book titles in Bangalore!", welcomeMessage);
@@ -43,6 +40,12 @@ class BibliotecaAppTest {
 
     @Test
     void shouldShowListOfBooksWithTitleAuthorAndPublishedYear() {
-        Book book1 = mock(Book.class);
+        Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
+        Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
+        List<Book> expectedBooks = new ArrayList<>(Arrays.asList(book1, book2));
+
+        List<Book> actualBooks = bibliotecaApp.showBooks();
+
+        assertEquals(expectedBooks, actualBooks);
     }
 }
