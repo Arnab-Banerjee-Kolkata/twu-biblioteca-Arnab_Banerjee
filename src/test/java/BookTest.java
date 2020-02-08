@@ -26,4 +26,14 @@ class BookTest {
 
         assertTrue(isSame);
     }
+
+    @Test
+    void shouldPassIfBookDetailsCanBeRead() {
+        Book book = new Book("Book_Name", "Author_Name", 1990);
+        String expectedDetails = "Book_Name Author_Name 1990";
+
+        String actualDetails = book.getDetails();
+
+        assertEquals(expectedDetails, actualDetails);
+    }
 }
