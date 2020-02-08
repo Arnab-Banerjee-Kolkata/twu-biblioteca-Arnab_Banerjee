@@ -1,10 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BibliotecaAppTest {
@@ -25,10 +21,9 @@ class BibliotecaAppTest {
 
     @Test
     void shouldShowAListOfAvailableBooksAfterDisplayingWelcomeMessage() {
-        Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
-        Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
-        String expectedBooks = book1.getTitle() + " " + book1.getAuthor() + " " + book1.getYearOfPublishing() + "\n" +
-                book2.getTitle() + " " + book2.getAuthor() + " " + book2.getYearOfPublishing();
+        Book book1 = new Book("Book_Name_1", null, 0);
+        Book book2 = new Book("Book_Name_2", null, 0);
+        String expectedBooks = book1.getTitle() + "\n" + book2.getTitle();
 
         String welcomeMessage = bibliotecaApp.showWelcomeMessage();
         String actualBooks = bibliotecaApp.showBooks();

@@ -20,12 +20,11 @@ public class BibliotecaApp {
     }
 
     public String showBooks() {
-        StringBuilder bookDetails = new StringBuilder();
+        StringBuilder bookTitles = new StringBuilder();
         for (Book book : books) {
-            bookDetails.append(book.getTitle()).append(" ").append(book.getAuthor()).append(" ").
-                    append(book.getYearOfPublishing()).append("\n");
+            bookTitles.append(book.getTitle()).append("\n");
         }
-        return bookDetails.toString().trim();
+        return bookTitles.toString().trim();
     }
 
 }
