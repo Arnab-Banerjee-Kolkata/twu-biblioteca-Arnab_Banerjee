@@ -34,7 +34,7 @@ class MenuTest {
     void shouldShowMessageWhenInvalidOptionIsEntered() {
         Menu menu = Menu.getInstance();
         BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
-        List<String> expectedMessage = new ArrayList<>(Collections.singletonList("Invalid option"));
+        List<String> expectedMessage = new ArrayList<>(Collections.singletonList("Please select a valid option!"));
 
         List<String> actualMessage = menu.enterOption(bibliotecaApp, -1);
 

@@ -22,7 +22,7 @@ public class Menu {
     }
 
     public List<String> enterOption(BibliotecaApp bibliotecaApp, int optionNumber) {
-        List<String> message = new ArrayList<>(Collections.singletonList("Invalid option"));
+        List<String> message = new ArrayList<>(Collections.singletonList("Please select a valid option!"));
         if (optionNumber == 1) {
             bibliotecaApp.showBooks();
         }
