@@ -139,4 +139,15 @@ class BibliotecaAppTest {
 
         assertEquals(expectedMessage, actualMessage);
     }
+
+    @Test
+    void shouldNotifyUserIfBookIsNotSuccessfullyReturned() throws IOException {
+        String expectedMessage = "That is not a valid book to return.";
+
+        String simulatedInput = "Book_Name_3\nAuthor_Name_3\n1991";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        String actualMessage = bibliotecaApp.returnBook();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
 }
