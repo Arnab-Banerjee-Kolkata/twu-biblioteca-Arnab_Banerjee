@@ -8,9 +8,11 @@ import java.util.List;
 public class BibliotecaApp {
 
     private List<Book> books;
+    private List<Book> checkOutBooks;
 
     public BibliotecaApp() {
         this.showWelcomeMessage();
+        this.checkOutBooks = new ArrayList<>();
         this.books = new ArrayList<>(Arrays.asList(
                 new Book("Book_Name_1", "Author_Name_1", 1998),
                 new Book("Book_Name_2", "Author_Name_2", 1987)
@@ -45,11 +47,20 @@ public class BibliotecaApp {
         String authorName = in.readLine();
         int yearOfPublishing = Integer.parseInt(in.readLine());
         Book book = new Book(bookTitle, authorName, yearOfPublishing);
-        if (books.contains(book))
+        if (books.contains(book)) {
             message = "Thank you! Enjoy the book";
-        else
+            checkOutBooks.add(book);
+        } else
             message = "Sorry, that book is not available";
         books.remove(book);
         return message;
+    }
+
+    public void returnBook(String bookTitle, String authorName, int yearOfPublishing) {
+        Book book = new Book(bookTitle, authorName, yearOfPublishing);
+        if (checkOutBooks.contains(book)) {
+            checkOutBooks.remove(book);
+            books.add(book);
+        }
     }
 }
