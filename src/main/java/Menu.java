@@ -22,9 +22,10 @@ public class Menu {
     }
 
     public List<String> enterOption(BibliotecaApp bibliotecaApp, int optionNumber) {
+        List<String> message = new ArrayList<>(Collections.singletonList("Invalid option"));
         if (optionNumber == 1) {
-            return bibliotecaApp.showBooks();
+            bibliotecaApp.showBooks();
         }
-        return null;
+        return message;
     }
 }

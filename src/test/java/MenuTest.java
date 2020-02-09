@@ -29,4 +29,15 @@ class MenuTest {
 
         verify(bibliotecaApp, times(1)).showBooks();
     }
+
+    @Test
+    void shouldShowMessageWhenInvalidOptionIsEntered() {
+        Menu menu = Menu.getInstance();
+        BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
+        List<String> expectedMessage = new ArrayList<>(Collections.singletonList("Invalid option"));
+
+        List<String> actualMessage = menu.enterOption(bibliotecaApp, -1);
+
+        assertEquals(expectedMessage, actualMessage);
+    }
 }
