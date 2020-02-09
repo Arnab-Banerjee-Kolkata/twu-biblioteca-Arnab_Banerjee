@@ -125,4 +125,18 @@ class BibliotecaAppTest {
 
         assertEquals(expectedBooks, actualBooks);
     }
+
+    @Test
+    void shouldNotifyUserWhenABookIsSuccessfullyReturned() throws IOException {
+        String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        String expectedMessage = "Thank you for returning the book";
+
+        bibliotecaApp.checkOutBook();
+        simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        String actualMessage = bibliotecaApp.returnBook();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
 }

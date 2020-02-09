@@ -56,7 +56,8 @@ public class BibliotecaApp {
         return message;
     }
 
-    public void returnBook() throws IOException {
+    public String returnBook() throws IOException {
+        String message = "";
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String bookTitle = in.readLine();
         String authorName = in.readLine();
@@ -65,6 +66,8 @@ public class BibliotecaApp {
         if (checkOutBooks.contains(book)) {
             checkOutBooks.remove(book);
             books.add(book);
+            message = "Thank you for returning the book";
         }
+        return message;
     }
 }
