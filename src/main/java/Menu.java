@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 public class Menu {
@@ -12,7 +12,10 @@ public class Menu {
     public static Menu getInstance() {
         if (menu == null) {
             menu = new Menu();
-            menu.menuOptions = new ArrayList<>(Collections.singletonList("1. Show Available Books"));
+            menu.menuOptions = new ArrayList<>(Arrays.asList(
+                    "1. Show Available Books",
+                    "2. Exit"
+            ));
         }
         return menu;
     }
@@ -22,10 +25,16 @@ public class Menu {
     }
 
     public String enterOption(BibliotecaApp bibliotecaApp, int optionNumber) {
-        String message = "Please select a valid option!";
-        if (optionNumber == 1) {
-            bibliotecaApp.showBooks();
+        switch (optionNumber) {
+            case 1:
+                bibliotecaApp.showBooks();
+                break;
+            case 2:
+                bibliotecaApp.exit();
+                break;
+            default:
+                return "Please select a valid option!";
         }
-        return message;
+        return null;
     }
 }

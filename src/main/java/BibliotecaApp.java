@@ -30,4 +30,8 @@ public class BibliotecaApp {
     public List<String> showMenu() {
         return Menu.getInstance().getOptions();
     }
+
+    public void exit() {
+        System.exit(0);
+    }
 }

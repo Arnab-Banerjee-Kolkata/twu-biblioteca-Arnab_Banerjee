@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -55,9 +54,10 @@ class BibliotecaAppTest {
 
     @Test
     void shouldShowMenuOptionsAfterWelcomeMessage() {
-        List<String> expectedMenuOptions = new ArrayList<>(
-                Collections.singletonList("1. Show Available Books")
-        );
+        List<String> expectedMenuOptions = new ArrayList<>(Arrays.asList(
+                "1. Show Available Books",
+                "2. Exit"
+        ));
 
         String welcomeMessage = bibliotecaApp.showWelcomeMessage();
         List<String> actualMenuOptions = bibliotecaApp.showMenu();
