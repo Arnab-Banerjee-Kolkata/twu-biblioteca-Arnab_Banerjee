@@ -12,7 +12,7 @@ public class BibliotecaApp {
                 new Book("Book_Name_1", "Author_Name_1", 1998),
                 new Book("Book_Name_2", "Author_Name_2", 1987)
         ));
-        this.showBooks();
+        this.showMenu();
     }
 
     public String showWelcomeMessage() {
@@ -27,4 +27,7 @@ public class BibliotecaApp {
         return bookTitles;
     }
 
+    public List<String> showMenu() {
+        return Menu.getInstance().getOptions();
+    }
 }
