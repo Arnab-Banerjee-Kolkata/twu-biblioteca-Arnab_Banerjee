@@ -34,4 +34,8 @@ public class BibliotecaApp {
     public void exit() {
         System.exit(0);
     }
+
+    public void checkOutBook(Book book) {
+        books.remove(book);
+    }
 }

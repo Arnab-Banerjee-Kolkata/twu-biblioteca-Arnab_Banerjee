@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -67,5 +68,17 @@ class BibliotecaAppTest {
 
         assertEquals(expectedMenuOptions, actualMenuOptions);
 
+    }
+
+    @Test
+    void shouldLetUserCheckoutABook() {
+        Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
+        Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
+        List<String> expectedBooks = new ArrayList<>(Collections.singletonList(book1.getTitle()));
+
+        bibliotecaApp.checkOutBook(book2);
+        List<String> actualBooks = bibliotecaApp.showBooks();
+
+        assertEquals(expectedBooks, actualBooks);
     }
 }
