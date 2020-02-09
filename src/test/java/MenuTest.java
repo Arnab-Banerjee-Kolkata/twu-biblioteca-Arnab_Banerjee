@@ -39,9 +39,9 @@ class MenuTest {
     @Test
     void shouldShowMessageWhenInvalidOptionIsEntered() {
         BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
-        List<String> expectedMessage = new ArrayList<>(Collections.singletonList("Please select a valid option!"));
+        String expectedMessage = "Please select a valid option!";
 
-        List<String> actualMessage = menu.enterOption(bibliotecaApp, -1);
+        String actualMessage = menu.enterOption(bibliotecaApp, -1);
 
         assertEquals(expectedMessage, actualMessage);
     }

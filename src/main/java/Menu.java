@@ -21,10 +21,10 @@ public class Menu {
         return this.menuOptions;
     }
 
-    public List<String> enterOption(BibliotecaApp bibliotecaApp, int optionNumber) {
-        List<String> message = new ArrayList<>(Collections.singletonList("Please select a valid option!"));
+    public String enterOption(BibliotecaApp bibliotecaApp, int optionNumber) {
+        String message = "Please select a valid option!";
         if (optionNumber == 1) {
-            return bibliotecaApp.showBooks();
+            bibliotecaApp.showBooks();
         }
         return message;
     }
