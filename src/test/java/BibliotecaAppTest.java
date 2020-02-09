@@ -96,4 +96,15 @@ class BibliotecaAppTest {
 
         assertEquals(expectedMessage, actualMessage);
     }
+
+    @Test
+    void shouldNotifyUserWhenABookCannotBeCheckedOut() throws IOException {
+        String simulatedInput = "Book_Name_3\nAuthor_Name_3\n1991";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        String expectedMessage = "Sorry, that book is not available";
+
+        String actualMessage = bibliotecaApp.checkOutBook();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
 }

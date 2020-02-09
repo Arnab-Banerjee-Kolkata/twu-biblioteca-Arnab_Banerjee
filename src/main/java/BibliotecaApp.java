@@ -39,7 +39,7 @@ public class BibliotecaApp {
     }
 
     public String checkOutBook() throws IOException {
-        String message = "";
+        String message;
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String bookTitle = in.readLine();
         String authorName = in.readLine();
@@ -47,6 +47,8 @@ public class BibliotecaApp {
         Book book = new Book(bookTitle, authorName, yearOfPublishing);
         if (books.contains(book))
             message = "Thank you! Enjoy the book";
+        else
+            message = "Sorry, that book is not available";
         books.remove(book);
         return message;
     }
