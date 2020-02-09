@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +21,8 @@ class MenuTest {
     void shouldShowMenuOptions() {
         List<String> expectedMenuOptions = new ArrayList<>(Arrays.asList(
                 "1. Show Available Books",
-                "2. Exit"
+                "2. Exit",
+                "3. Checkout"
         ));
 
         List<String> actualMenuOptions = menu.getOptions();
@@ -29,7 +31,7 @@ class MenuTest {
     }
 
     @Test
-    void shouldShowBookListIfOneIsEntered() {
+    void shouldShowBookListIfOneIsEntered() throws IOException {
         BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
 
         menu.enterOption(bibliotecaApp, 1);
@@ -38,7 +40,7 @@ class MenuTest {
     }
 
     @Test
-    void shouldShowMessageWhenInvalidOptionIsEntered() {
+    void shouldShowMessageWhenInvalidOptionIsEntered() throws IOException {
         BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
         String expectedMessage = "Please select a valid option!";
 
@@ -48,11 +50,20 @@ class MenuTest {
     }
 
     @Test
-    void shouldCallExitFunctionalityOfBibliotecaAppWhenExitOptionIsEntered() {
+    void shouldCallExitFunctionalityOfBibliotecaAppWhenExitOptionIsEntered() throws IOException {
         BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
 
         menu.enterOption(bibliotecaApp, 2);
 
         verify(bibliotecaApp, times(1)).exit();
+    }
+
+    @Test
+    void shouldCallCheckOutFunctionalityOfBibliotecaAppOnEnteringCheckOutOption() throws IOException {
+        BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
+
+        menu.enterOption(bibliotecaApp, 3);
+
+        verify(bibliotecaApp, times(1)).checkOutBook();
     }
 }

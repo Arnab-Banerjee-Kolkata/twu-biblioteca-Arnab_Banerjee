@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -57,7 +59,8 @@ class BibliotecaAppTest {
     void shouldShowMenuOptionsAfterWelcomeMessage() {
         List<String> expectedMenuOptions = new ArrayList<>(Arrays.asList(
                 "1. Show Available Books",
-                "2. Exit"
+                "2. Exit",
+                "3. Checkout"
         ));
 
         String welcomeMessage = bibliotecaApp.showWelcomeMessage();
@@ -71,11 +74,13 @@ class BibliotecaAppTest {
     }
 
     @Test
-    void shouldLetUserCheckoutABook() {
+    void shouldLetUserCheckoutABook() throws IOException {
         Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
         List<String> expectedBooks = new ArrayList<>(Collections.singletonList(book1.getTitle()));
+        String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
-        bibliotecaApp.checkOutBook("Book_Name_2", "Author_Name_2", 1987);
+        bibliotecaApp.checkOutBook();
         List<String> actualBooks = bibliotecaApp.showBooks();
 
         assertEquals(expectedBooks, actualBooks);

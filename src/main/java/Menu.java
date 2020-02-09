@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,8 @@ public class Menu {
             menu = new Menu();
             menu.menuOptions = new ArrayList<>(Arrays.asList(
                     "1. Show Available Books",
-                    "2. Exit"
+                    "2. Exit",
+                    "3. Checkout"
             ));
         }
         return menu;
@@ -24,7 +26,7 @@ public class Menu {
         return this.menuOptions;
     }
 
-    public String enterOption(BibliotecaApp bibliotecaApp, int optionNumber) {
+    public String enterOption(BibliotecaApp bibliotecaApp, int optionNumber) throws IOException {
         switch (optionNumber) {
             case 1:
                 bibliotecaApp.showBooks();
@@ -32,6 +34,8 @@ public class Menu {
             case 2:
                 bibliotecaApp.exit();
                 break;
+            case 3:
+                bibliotecaApp.checkOutBook();
             default:
                 return "Please select a valid option!";
         }
