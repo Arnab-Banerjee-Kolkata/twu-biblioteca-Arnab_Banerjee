@@ -20,4 +20,10 @@ public class Menu {
     public List<String> getOptions() {
         return this.menuOptions;
     }
+
+    public void enterOption(BibliotecaApp bibliotecaApp, int optionNumber) {
+        if (optionNumber == 1) {
+            bibliotecaApp.showBooks();
+        }
+    }
 }

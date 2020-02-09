@@ -68,4 +68,13 @@ class BibliotecaAppTest {
         assertEquals(expectedMenuOptions, actualMenuOptions);
 
     }
+
+    @Test
+    void shouldShowListOfBooksAfterOptionIsEnteredFromMenu() {
+        Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
+        Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
+        List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getTitle(), book2.getTitle()));
+
+
+    }
 }
