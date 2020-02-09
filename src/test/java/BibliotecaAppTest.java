@@ -117,7 +117,9 @@ class BibliotecaAppTest {
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
         bibliotecaApp.checkOutBook();
-        bibliotecaApp.returnBook("Book_Name_2", "Author_Name_2", 1987);
+        simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        bibliotecaApp.returnBook();
         List<String> actualBooks = bibliotecaApp.showBooks();
 
         assertEquals(expectedBooks, actualBooks);

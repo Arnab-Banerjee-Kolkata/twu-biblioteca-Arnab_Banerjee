@@ -56,7 +56,11 @@ public class BibliotecaApp {
         return message;
     }
 
-    public void returnBook(String bookTitle, String authorName, int yearOfPublishing) {
+    public void returnBook() throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        String bookTitle = in.readLine();
+        String authorName = in.readLine();
+        int yearOfPublishing = Integer.parseInt(in.readLine());
         Book book = new Book(bookTitle, authorName, yearOfPublishing);
         if (checkOutBooks.contains(book)) {
             checkOutBooks.remove(book);
