@@ -22,7 +22,8 @@ class MenuTest {
         List<String> expectedMenuOptions = new ArrayList<>(Arrays.asList(
                 "1. Show Available Books",
                 "2. Exit",
-                "3. Checkout"
+                "3. Checkout",
+                "4. Return"
         ));
 
         List<String> actualMenuOptions = menu.getOptions();
@@ -65,5 +66,14 @@ class MenuTest {
         menu.enterOption(bibliotecaApp, 3);
 
         verify(bibliotecaApp, times(1)).checkOutBook();
+    }
+
+    @Test
+    void shouldCallReturnBookFunctionOfBibliotecaAppOnReturningBook() throws IOException {
+        BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
+
+        menu.enterOption(bibliotecaApp, 4);
+
+        verify(bibliotecaApp, times(1)).returnBook();
     }
 }

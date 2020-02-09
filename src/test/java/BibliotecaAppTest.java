@@ -60,7 +60,8 @@ class BibliotecaAppTest {
         List<String> expectedMenuOptions = new ArrayList<>(Arrays.asList(
                 "1. Show Available Books",
                 "2. Exit",
-                "3. Checkout"
+                "3. Checkout",
+                "4. Return"
         ));
 
         String welcomeMessage = bibliotecaApp.showWelcomeMessage();

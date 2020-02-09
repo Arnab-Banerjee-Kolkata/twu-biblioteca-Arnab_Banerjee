@@ -16,7 +16,8 @@ public class Menu {
             menu.menuOptions = new ArrayList<>(Arrays.asList(
                     "1. Show Available Books",
                     "2. Exit",
-                    "3. Checkout"
+                    "3. Checkout",
+                    "4. Return"
             ));
         }
         return menu;
@@ -36,6 +37,8 @@ public class Menu {
                 break;
             case 3:
                 bibliotecaApp.checkOutBook();
+            case 4:
+                bibliotecaApp.returnBook();
             default:
                 return "Please select a valid option!";
         }
