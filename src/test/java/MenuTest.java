@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,9 +9,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class MenuTest {
+    Menu menu;
+
+    @BeforeEach
+    void setUp() {
+        menu = Menu.getInstance();
+    }
+
     @Test
     void shouldShowMenuOptions() {
-        Menu menu = Menu.getInstance();
         List<String> expectedMenuOptions = new ArrayList<>(Collections.singletonList(
                 "1. Show Available Books"
         ));
@@ -22,7 +29,6 @@ class MenuTest {
 
     @Test
     void shouldShowBookListIfOneIsEntered() {
-        Menu menu = Menu.getInstance();
         BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
 
         menu.enterOption(bibliotecaApp, 1);
@@ -32,7 +38,6 @@ class MenuTest {
 
     @Test
     void shouldShowMessageWhenInvalidOptionIsEntered() {
-        Menu menu = Menu.getInstance();
         BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
         List<String> expectedMessage = new ArrayList<>(Collections.singletonList("Please select a valid option!"));
 
