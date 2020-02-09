@@ -35,7 +35,8 @@ public class BibliotecaApp {
         System.exit(0);
     }
 
-    public void checkOutBook(Book book) {
+    public void checkOutBook(String bookTitle, String authorName, int yearOfPublishing) {
+        Book book = new Book(bookTitle, authorName, yearOfPublishing);
         books.remove(book);
     }
 }
