@@ -21,9 +21,10 @@ public class Menu {
         return this.menuOptions;
     }
 
-    public void enterOption(BibliotecaApp bibliotecaApp, int optionNumber) {
+    public List<String> enterOption(BibliotecaApp bibliotecaApp, int optionNumber) {
         if (optionNumber == 1) {
-            bibliotecaApp.showBooks();
+            return bibliotecaApp.showBooks();
         }
+        return null;
     }
 }

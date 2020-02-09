@@ -75,6 +75,8 @@ class BibliotecaAppTest {
         Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
         List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getTitle(), book2.getTitle()));
 
+        List<String> actualBooks = Menu.getInstance().enterOption(bibliotecaApp, 1);
 
+        assertEquals(expectedBooks, actualBooks);
     }
 }
