@@ -28,22 +28,23 @@ public class Menu {
     }
 
     public String enterOption(BibliotecaApp bibliotecaApp, int optionNumber) throws IOException {
+        String message = "";
         switch (optionNumber) {
             case 1:
-                System.out.println(bibliotecaApp.showBooks());
+                message = bibliotecaApp.showBooks().toString();
                 break;
             case 2:
                 bibliotecaApp.exit();
                 break;
             case 3:
-                System.out.println(bibliotecaApp.checkOutBook());
+                message += bibliotecaApp.checkOutBook();
                 break;
             case 4:
-                System.out.println(bibliotecaApp.returnBook());
+                message += bibliotecaApp.returnBook();
                 break;
             default:
-                return "Please select a valid option!";
+                message = "Please select a valid option!";
         }
-        return "Action completed";
+        return message;
     }
 }
