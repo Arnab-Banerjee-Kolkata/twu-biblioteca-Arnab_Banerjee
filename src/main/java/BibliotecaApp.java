@@ -65,14 +65,18 @@ public class BibliotecaApp {
         System.out.println("Enter author name");
         String authorName = bufferedReader.readLine();
         System.out.println("Enter year of publishing");
-        int yearOfPublishing = Integer.parseInt(bufferedReader.readLine());
-        Book book = new Book(bookTitle, authorName, yearOfPublishing);
-        if (checkOutBooks.contains(book)) {
-            checkOutBooks.remove(book);
-            books.add(book);
-            message = "Thank you for returning the book";
-        } else
-            message = "That is not a valid book to return.";
+        try {
+            int yearOfPublishing = Integer.parseInt(bufferedReader.readLine());
+            Book book = new Book(bookTitle, authorName, yearOfPublishing);
+            if (checkOutBooks.contains(book)) {
+                checkOutBooks.remove(book);
+                books.add(book);
+                message = "Thank you for returning the book";
+            } else
+                message = "That is not a valid book to return.";
+        } catch (NumberFormatException e) {
+            message = "Invalid Input";
+        }
         return message;
     }
 }
