@@ -9,6 +9,8 @@ public class BibliotecaApp {
 
     private List<Book> books;
     private List<Book> checkOutBooks;
+    Menu menu;
+    BufferedReader bufferedReader;
 
     public BibliotecaApp() {
         this.checkOutBooks = new ArrayList<>();
@@ -16,6 +18,8 @@ public class BibliotecaApp {
                 new Book("Book_Name_1", "Author_Name_1", 1998),
                 new Book("Book_Name_2", "Author_Name_2", 1987)
         ));
+        menu = Menu.getInstance();
+        bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     }
 
 
@@ -79,5 +83,16 @@ public class BibliotecaApp {
             message = "Invalid Input";
         }
         return message;
+    }
+
+    public void startApp() throws IOException {
+        showWelcomeMessage();
+        while (true) {
+            System.out.println("Enter your choice");
+            System.out.println(menu.getOptions());
+            int choice = Integer.parseInt(bufferedReader.readLine());
+            System.out.println(menu.enterOption(this, choice));
+        }
+
     }
 }
