@@ -139,7 +139,6 @@ class BibliotecaAppTest {
         String expectedMessage = "Invalid Input";
 
         String actualMessage = bibliotecaApp.checkOutBook();
-        List<String> actualBooks = bibliotecaApp.showBooks();
 
         assertEquals(expectedMessage, actualMessage);
     }
@@ -151,7 +150,6 @@ class BibliotecaAppTest {
         String expectedMessage = "Invalid Input";
 
         String actualMessage = bibliotecaApp.returnBook();
-        List<String> actualBooks = bibliotecaApp.showBooks();
 
         assertEquals(expectedMessage, actualMessage);
     }
