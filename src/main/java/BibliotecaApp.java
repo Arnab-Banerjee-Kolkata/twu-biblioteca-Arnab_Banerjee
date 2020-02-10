@@ -42,14 +42,18 @@ public class BibliotecaApp {
         System.out.println("Enter author name");
         String authorName = bufferedReader.readLine();
         System.out.println("Enter year of publishing");
-        int yearOfPublishing = Integer.parseInt(bufferedReader.readLine());
-        Book book = new Book(bookTitle, authorName, yearOfPublishing);
-        if (books.contains(book)) {
-            message = "Thank you! Enjoy the book";
-            checkOutBooks.add(book);
-        } else
-            message = "Sorry, that book is not available";
-        books.remove(book);
+        try {
+            int yearOfPublishing = Integer.parseInt(bufferedReader.readLine());
+            Book book = new Book(bookTitle, authorName, yearOfPublishing);
+            if (books.contains(book)) {
+                message = "Thank you! Enjoy the book";
+                checkOutBooks.add(book);
+            } else
+                message = "Sorry, that book is not available";
+            books.remove(book);
+        } catch (NumberFormatException e) {
+            message = "Invalid Input";
+        }
         return message;
     }
 

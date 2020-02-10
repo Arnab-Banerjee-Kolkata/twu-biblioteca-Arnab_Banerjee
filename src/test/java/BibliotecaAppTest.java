@@ -131,4 +131,16 @@ class BibliotecaAppTest {
 
         assertEquals(expectedMessage, actualMessage);
     }
+
+    @Test
+    void shouldDisplayMessageOnEnteringInvalidInputDuringCheckout() throws IOException {
+        String simulatedInput = "Book_Name_2\nAuthor_Name_2\na";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        String expectedMessage = "Invalid Input";
+
+        String actualMessage = bibliotecaApp.checkOutBook();
+        List<String> actualBooks = bibliotecaApp.showBooks();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
 }
