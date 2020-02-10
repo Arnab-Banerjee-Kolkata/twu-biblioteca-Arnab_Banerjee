@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,15 +23,11 @@ public class Menu {
         return menu;
     }
 
-    public void getOptions(BibliotecaApp bibliotecaApp) throws IOException {
-        System.out.println(this.menuOptions);
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter your choice:");
-        int choice = (Integer.parseInt(bufferedReader.readLine()));
-        enterOption(bibliotecaApp, choice);
+    public List<String> getOptions() {
+        return this.menuOptions;
     }
 
-    public void enterOption(BibliotecaApp bibliotecaApp, int optionNumber) throws IOException {
+    public String enterOption(BibliotecaApp bibliotecaApp, int optionNumber) throws IOException {
         StringBuilder message = new StringBuilder();
         String[] listOfBooks;
         switch (optionNumber) {
@@ -64,6 +58,6 @@ public class Menu {
             default:
                 message = new StringBuilder("Please select a valid option!");
         }
-        System.out.println(message.toString().trim());
+        return message.toString().trim();
     }
 }
