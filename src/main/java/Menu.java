@@ -39,6 +39,7 @@ public class Menu {
                 System.out.println(bibliotecaApp.checkOutBook());
             case 4:
                 System.out.println(bibliotecaApp.returnBook());
+                break;
             default:
                 return "Please select a valid option!";
         }
