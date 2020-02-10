@@ -28,9 +28,9 @@ class BibliotecaAppTest {
 
     @Test
     void shouldShowAListOfAvailableBooksAfterDisplayingWelcomeMessage() {
-        Book book1 = new Book("Book_Name_1", null, 0);
-        Book book2 = new Book("Book_Name_2", null, 0);
-        List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getTitle(), book2.getTitle()));
+        Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
+        Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
+        List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getDetails(), book2.getDetails()));
 
         String welcomeMessage = bibliotecaApp.showWelcomeMessage();
         List<String> actualBooks = bibliotecaApp.showBooks();
@@ -46,7 +46,7 @@ class BibliotecaAppTest {
         Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
         Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
         String expectedDetails = "Book_Name_2 Author_Name_2 1987";
-        List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getTitle(), book2.getTitle()));
+        List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getDetails(), book2.getDetails()));
 
         List<String> actualBooks = bibliotecaApp.showBooks();
         String actualDetails = book2.getDetails();
@@ -58,7 +58,7 @@ class BibliotecaAppTest {
     @Test
     void shouldLetUserCheckoutABook() throws IOException {
         Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
-        List<String> expectedBooks = new ArrayList<>(Collections.singletonList(book1.getTitle()));
+        List<String> expectedBooks = new ArrayList<>(Collections.singletonList(book1.getDetails()));
         String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
@@ -94,7 +94,7 @@ class BibliotecaAppTest {
     void shouldAllowUserToReturnABook() throws IOException {
         Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
         Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
-        List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getTitle(), book2.getTitle()));
+        List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getDetails(), book2.getDetails()));
         String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 

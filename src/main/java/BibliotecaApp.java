@@ -25,7 +25,7 @@ public class BibliotecaApp {
     public List<String> showBooks() {
         List<String> bookTitles = new ArrayList<>();
         for (Book book : books) {
-            bookTitles.add(book.getTitle());
+            bookTitles.add(book.getDetails());
         }
         return bookTitles;
     }
