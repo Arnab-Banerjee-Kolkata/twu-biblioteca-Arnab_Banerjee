@@ -12,7 +12,7 @@ public class UserCustomer {
         menu = Menu.getInstance();
         bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-        bibliotecaApp.showWelcomeMessage();
+        System.out.println(bibliotecaApp.showWelcomeMessage());
         while (true) {
             System.out.println("Enter your choice:");
             System.out.println(menu.getOptions());
