@@ -43,8 +43,11 @@ public class BibliotecaApp {
     public String checkOutBook() throws IOException {
         String message;
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter title");
         String bookTitle = in.readLine();
+        System.out.println("Enter author name");
         String authorName = in.readLine();
+        System.out.println("Enter year of publishing");
         int yearOfPublishing = Integer.parseInt(in.readLine());
         Book book = new Book(bookTitle, authorName, yearOfPublishing);
         if (books.contains(book)) {
@@ -59,8 +62,11 @@ public class BibliotecaApp {
     public String returnBook() throws IOException {
         String message;
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter title");
         String bookTitle = in.readLine();
+        System.out.println("Enter author name");
         String authorName = in.readLine();
+        System.out.println("Enter year of publishing");
         int yearOfPublishing = Integer.parseInt(in.readLine());
         Book book = new Book(bookTitle, authorName, yearOfPublishing);
         if (checkOutBooks.contains(book)) {
