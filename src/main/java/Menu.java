@@ -28,23 +28,36 @@ public class Menu {
     }
 
     public String enterOption(BibliotecaApp bibliotecaApp, int optionNumber) throws IOException {
-        String message = "";
+        StringBuilder message = new StringBuilder();
+        String[] listOfBooks;
         switch (optionNumber) {
             case 1:
-                message = bibliotecaApp.showBooks().toString();
+                message = new StringBuilder(bibliotecaApp.showBooks().toString());
+                listOfBooks = message.toString().split(",");
+                message = new StringBuilder();
+                for (String item : listOfBooks)
+                    message.append(item).append("\n");
                 break;
             case 2:
                 bibliotecaApp.exit();
                 break;
             case 3:
-                message += bibliotecaApp.checkOutBook();
+                message.append(bibliotecaApp.checkOutBook());
+                listOfBooks = message.toString().split(",");
+                message = new StringBuilder();
+                for (String item : listOfBooks)
+                    message.append(item).append("\n");
                 break;
             case 4:
-                message += bibliotecaApp.returnBook();
+                message.append(bibliotecaApp.returnBook());
+                listOfBooks = message.toString().split(",");
+                message = new StringBuilder();
+                for (String item : listOfBooks)
+                    message.append(item).append("\n");
                 break;
             default:
-                message = "Please select a valid option!";
+                message = new StringBuilder("Please select a valid option!");
         }
-        return message;
+        return message.toString().trim();
     }
 }

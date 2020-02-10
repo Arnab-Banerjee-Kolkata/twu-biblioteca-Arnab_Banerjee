@@ -17,9 +17,8 @@ public class UserCustomer {
             System.out.println("Enter your choice:");
             System.out.println(menu.getOptions());
             int choice = (Integer.parseInt(bufferedReader.readLine()));
-            String[] result = menu.enterOption(bibliotecaApp, choice).split(",");
-            for (String listItem : result)
-                System.out.println(listItem);
+            String result = menu.enterOption(bibliotecaApp, choice);
+            System.out.println(result);
         }
 
     }
