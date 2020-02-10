@@ -18,14 +18,6 @@ public class Book {
         return this.title;
     }
 
-    public String getAuthor() {
-        return this.author;
-    }
-
-    public int getYearOfPublishing() {
-        return this.yearOfPublishing;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
