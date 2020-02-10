@@ -56,25 +56,6 @@ class BibliotecaAppTest {
     }
 
     @Test
-    void shouldShowMenuOptionsAfterWelcomeMessage() {
-        List<String> expectedMenuOptions = new ArrayList<>(Arrays.asList(
-                "1. Show Available Books",
-                "2. Exit",
-                "3. Checkout",
-                "4. Return"
-        ));
-
-        String welcomeMessage = bibliotecaApp.showWelcomeMessage();
-        List<String> actualMenuOptions = bibliotecaApp.showMenu();
-
-        assertEquals("Welcome to Biblioteca." +
-                " Your one-stop-shop for great book titles in Bangalore!", welcomeMessage);
-
-        assertEquals(expectedMenuOptions, actualMenuOptions);
-
-    }
-
-    @Test
     void shouldLetUserCheckoutABook() throws IOException {
         Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
         List<String> expectedBooks = new ArrayList<>(Collections.singletonList(book1.getTitle()));
