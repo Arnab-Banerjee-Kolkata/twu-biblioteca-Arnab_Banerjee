@@ -30,15 +30,15 @@ public class Menu {
     public String enterOption(BibliotecaApp bibliotecaApp, int optionNumber) throws IOException {
         switch (optionNumber) {
             case 1:
-                bibliotecaApp.showBooks();
+                System.out.println(bibliotecaApp.showBooks());
                 break;
             case 2:
                 bibliotecaApp.exit();
                 break;
             case 3:
-                bibliotecaApp.checkOutBook();
+                System.out.println(bibliotecaApp.checkOutBook());
             case 4:
-                bibliotecaApp.returnBook();
+                System.out.println(bibliotecaApp.returnBook());
             default:
                 return "Please select a valid option!";
         }
