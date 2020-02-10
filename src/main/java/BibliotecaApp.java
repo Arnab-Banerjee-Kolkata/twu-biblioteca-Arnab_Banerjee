@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,7 +43,6 @@ public class BibliotecaApp {
 
     public String checkOutBook() throws IOException {
         String message;
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         outputStream.println("Enter title");
         String bookTitle = bufferedReader.readLine();
         outputStream.println("Enter author name");
@@ -67,7 +65,6 @@ public class BibliotecaApp {
 
     public String returnBook() throws IOException {
         String message;
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         outputStream.println("Enter title");
         String bookTitle = bufferedReader.readLine();
         outputStream.println("Enter author name");
