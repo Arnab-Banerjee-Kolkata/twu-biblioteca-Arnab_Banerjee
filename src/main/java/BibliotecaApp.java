@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,15 +12,17 @@ public class BibliotecaApp {
     private List<Book> checkOutBooks;
     Menu menu;
     BufferedReader bufferedReader;
+    PrintStream outputStream;
 
-    public BibliotecaApp() {
+    public BibliotecaApp(BufferedReader bufferedReader, PrintStream outputStream) {
         this.checkOutBooks = new ArrayList<>();
         this.books = new ArrayList<>(Arrays.asList(
                 new Book("Book_Name_1", "Author_Name_1", 1998),
                 new Book("Book_Name_2", "Author_Name_2", 1987)
         ));
         menu = Menu.getInstance();
-        bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        this.bufferedReader = bufferedReader;
+        this.outputStream = outputStream;
     }
 
 
@@ -42,11 +45,11 @@ public class BibliotecaApp {
     public String checkOutBook() throws IOException {
         String message;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter title");
+        outputStream.println("Enter title");
         String bookTitle = bufferedReader.readLine();
-        System.out.println("Enter author name");
+        outputStream.println("Enter author name");
         String authorName = bufferedReader.readLine();
-        System.out.println("Enter year of publishing");
+        outputStream.println("Enter year of publishing");
         try {
             int yearOfPublishing = Integer.parseInt(bufferedReader.readLine());
             Book book = new Book(bookTitle, authorName, yearOfPublishing);
@@ -65,11 +68,11 @@ public class BibliotecaApp {
     public String returnBook() throws IOException {
         String message;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter title");
+        outputStream.println("Enter title");
         String bookTitle = bufferedReader.readLine();
-        System.out.println("Enter author name");
+        outputStream.println("Enter author name");
         String authorName = bufferedReader.readLine();
-        System.out.println("Enter year of publishing");
+        outputStream.println("Enter year of publishing");
         try {
             int yearOfPublishing = Integer.parseInt(bufferedReader.readLine());
             Book book = new Book(bookTitle, authorName, yearOfPublishing);
@@ -88,10 +91,10 @@ public class BibliotecaApp {
     public void startApp() throws IOException {
         showWelcomeMessage();
         while (true) {
-            System.out.println("Enter your choice");
-            System.out.println(menu.getOptions());
+            outputStream.println("Enter your choice");
+            outputStream.println(menu.getOptions());
             int choice = Integer.parseInt(bufferedReader.readLine());
-            System.out.println(menu.enterOption(this, choice));
+            outputStream.println(menu.enterOption(this, choice));
         }
 
     }
