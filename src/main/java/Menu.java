@@ -37,6 +37,7 @@ public class Menu {
                 break;
             case 3:
                 System.out.println(bibliotecaApp.checkOutBook());
+                break;
             case 4:
                 System.out.println(bibliotecaApp.returnBook());
                 break;
