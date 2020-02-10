@@ -16,7 +16,6 @@ public class BibliotecaApp {
                 new Book("Book_Name_1", "Author_Name_1", 1998),
                 new Book("Book_Name_2", "Author_Name_2", 1987)
         ));
-        this.showMenu();
     }
 
     public String showWelcomeMessage() {
