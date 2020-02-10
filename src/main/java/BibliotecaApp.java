@@ -11,7 +11,6 @@ public class BibliotecaApp {
     private List<Book> checkOutBooks;
 
     public BibliotecaApp() {
-        this.showWelcomeMessage();
         this.checkOutBooks = new ArrayList<>();
         this.books = new ArrayList<>(Arrays.asList(
                 new Book("Book_Name_1", "Author_Name_1", 1998),
