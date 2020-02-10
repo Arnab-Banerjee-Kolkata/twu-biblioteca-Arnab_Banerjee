@@ -18,6 +18,15 @@ public class Book {
         return this.title;
     }
 
+    public String getDetails() {
+        return title + " " + author + " " + yearOfPublishing;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, author, yearOfPublishing);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -26,14 +35,5 @@ public class Book {
         return yearOfPublishing == book.yearOfPublishing &&
                 title.equals(book.title) &&
                 author.equals(book.author);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(title, author, yearOfPublishing);
-    }
-
-    public String getDetails() {
-        return title + " " + author + " " + yearOfPublishing;
     }
 }
