@@ -1,8 +1,10 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,7 +17,8 @@ class BibliotecaAppTest {
 
     @BeforeEach
     void setup() {
-        bibliotecaApp = new BibliotecaApp();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        bibliotecaApp = new BibliotecaApp(bufferedReader, System.out);
     }
 
     @Test
