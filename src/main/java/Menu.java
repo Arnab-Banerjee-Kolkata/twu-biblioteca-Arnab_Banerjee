@@ -43,6 +43,6 @@ public class Menu {
             default:
                 return "Please select a valid option!";
         }
-        return null;
+        return "Action completed";
     }
 }
