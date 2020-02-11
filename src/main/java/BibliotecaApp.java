@@ -9,13 +9,11 @@ import java.util.List;
 public class BibliotecaApp {
 
     private List<Book> books;
-    private List<Book> checkOutBooks;
     Menu menu;
     PrintStream outputStream;
     private Library library;
 
     public BibliotecaApp(PrintStream outputStream) {
-        this.checkOutBooks = new ArrayList<>();
         this.books = new ArrayList<>(Arrays.asList(
                 new Book("Book_Name_1", "Author_Name_1", 1998),
                 new Book("Book_Name_2", "Author_Name_2", 1987)
