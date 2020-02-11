@@ -28,62 +28,8 @@ public class BibliotecaApp {
         return "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
     }
 
-    public List<String> showBooks() {
-        List<String> bookTitles = new ArrayList<>();
-        for (Book book : books) {
-            bookTitles.add(book.getDetails());
-        }
-        return bookTitles;
-    }
-
     public void exit() {
         System.exit(0);
-    }
-
-    public String checkOutBook() throws IOException {
-        String message;
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        outputStream.println("Enter title");
-        String bookTitle = bufferedReader.readLine();
-        outputStream.println("Enter author name");
-        String authorName = bufferedReader.readLine();
-        outputStream.println("Enter year of publishing");
-        try {
-            int yearOfPublishing = Integer.parseInt(bufferedReader.readLine());
-            Book book = new Book(bookTitle, authorName, yearOfPublishing);
-            if (books.contains(book)) {
-                message = "Thank you! Enjoy the book";
-                checkOutBooks.add(book);
-            } else
-                message = "Sorry, that book is not available";
-            books.remove(book);
-        } catch (NumberFormatException e) {
-            message = "Invalid Input";
-        }
-        return message;
-    }
-
-    public String returnBook() throws IOException {
-        String message;
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        outputStream.println("Enter title");
-        String bookTitle = bufferedReader.readLine();
-        outputStream.println("Enter author name");
-        String authorName = bufferedReader.readLine();
-        outputStream.println("Enter year of publishing");
-        try {
-            int yearOfPublishing = Integer.parseInt(bufferedReader.readLine());
-            Book book = new Book(bookTitle, authorName, yearOfPublishing);
-            if (checkOutBooks.contains(book)) {
-                checkOutBooks.remove(book);
-                books.add(book);
-                message = "Thank you for returning the book";
-            } else
-                message = "That is not a valid book to return.";
-        } catch (NumberFormatException e) {
-            message = "Invalid Input";
-        }
-        return message;
     }
 
     public void startApp() throws IOException {
