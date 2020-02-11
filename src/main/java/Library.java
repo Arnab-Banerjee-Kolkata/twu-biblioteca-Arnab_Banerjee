@@ -51,7 +51,8 @@ public class Library {
         return message;
     }
 
-    public void returnBook() throws IOException {
+    public String returnBook() throws IOException {
+        String message = "";
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         outputStream.println("Enter title");
         String bookTitle = bufferedReader.readLine();
@@ -64,9 +65,12 @@ public class Library {
             if (checkOutBooks.contains(book)) {
                 checkOutBooks.remove(book);
                 books.add(book);
+                message = "Thank you for returning the book";
             }
         } catch (NumberFormatException e) {
+            message = "Invalid Input";
         }
+        return message;
     }
 
 }
