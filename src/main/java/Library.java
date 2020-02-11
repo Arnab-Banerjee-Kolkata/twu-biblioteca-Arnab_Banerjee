@@ -66,6 +66,8 @@ public class Library {
                 checkOutBooks.remove(book);
                 books.add(book);
                 message = "Thank you for returning the book";
+            } else {
+                message = "That is not a valid book to return.";
             }
         } catch (NumberFormatException e) {
             message = "Invalid Input";
