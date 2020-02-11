@@ -1,10 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,8 +15,7 @@ class BibliotecaAppTest {
 
     @BeforeEach
     void setup() {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        bibliotecaApp = new BibliotecaApp(bufferedReader, System.out);
+        bibliotecaApp = new BibliotecaApp(System.out);
     }
 
     @Test
@@ -33,14 +30,11 @@ class BibliotecaAppTest {
     void shouldShowListOfBooksWithTitleAuthorAndPublishedYear() {
         Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
         Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
-        String expectedDetails = "Book_Name_2 Author_Name_2 1987";
         List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getDetails(), book2.getDetails()));
 
         List<String> actualBooks = bibliotecaApp.showBooks();
-        String actualDetails = book2.getDetails();
 
         assertEquals(expectedBooks, actualBooks);
-        assertEquals(expectedDetails, actualDetails);
     }
 
     @Test

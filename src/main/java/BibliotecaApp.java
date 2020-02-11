@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,17 +11,15 @@ public class BibliotecaApp {
     private List<Book> books;
     private List<Book> checkOutBooks;
     Menu menu;
-    BufferedReader bufferedReader;
     PrintStream outputStream;
 
-    public BibliotecaApp(BufferedReader bufferedReader, PrintStream outputStream) {
+    public BibliotecaApp(PrintStream outputStream) {
         this.checkOutBooks = new ArrayList<>();
         this.books = new ArrayList<>(Arrays.asList(
                 new Book("Book_Name_1", "Author_Name_1", 1998),
                 new Book("Book_Name_2", "Author_Name_2", 1987)
         ));
         menu = Menu.getInstance();
-        this.bufferedReader = bufferedReader;
         this.outputStream = outputStream;
     }
 
@@ -43,6 +42,7 @@ public class BibliotecaApp {
 
     public String checkOutBook() throws IOException {
         String message;
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         outputStream.println("Enter title");
         String bookTitle = bufferedReader.readLine();
         outputStream.println("Enter author name");
@@ -65,6 +65,7 @@ public class BibliotecaApp {
 
     public String returnBook() throws IOException {
         String message;
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         outputStream.println("Enter title");
         String bookTitle = bufferedReader.readLine();
         outputStream.println("Enter author name");
@@ -87,6 +88,7 @@ public class BibliotecaApp {
 
     public void startApp() throws IOException {
         showWelcomeMessage();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
             outputStream.println("Enter your choice");
             outputStream.println(menu.getOptions());
