@@ -16,7 +16,7 @@ class MenuTest {
 
     @BeforeEach
     void setUp() {
-        menu = Menu.getInstance();
+        menu = new Menu();
         library = mock(Library.class);
         bibliotecaApp = mock(BibliotecaApp.class);
     }

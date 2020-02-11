@@ -10,7 +10,7 @@ public class BibliotecaApp {
     private Library library;
 
     public BibliotecaApp(PrintStream outputStream) {
-        menu = Menu.getInstance();
+        menu = new Menu();
         this.outputStream = outputStream;
         library = new Library(outputStream);
     }

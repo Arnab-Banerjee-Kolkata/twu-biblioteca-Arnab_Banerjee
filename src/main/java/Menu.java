@@ -4,24 +4,17 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Menu {
-    private static Menu menu;
     private List<String> menuOptions;
 
-    private Menu() {
+    Menu() {
+        menuOptions = new ArrayList<>(Arrays.asList(
+                "1. Show Available Books",
+                "2. Exit",
+                "3. Checkout",
+                "4. Return"
+        ));
     }
 
-    public static Menu getInstance() {
-        if (menu == null) {
-            menu = new Menu();
-            menu.menuOptions = new ArrayList<>(Arrays.asList(
-                    "1. Show Available Books",
-                    "2. Exit",
-                    "3. Checkout",
-                    "4. Return"
-            ));
-        }
-        return menu;
-    }
 
     public List<String> getOptions() {
         return this.menuOptions;
