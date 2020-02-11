@@ -12,6 +12,7 @@ public class BibliotecaApp {
     private List<Book> checkOutBooks;
     Menu menu;
     PrintStream outputStream;
+    private Library library;
 
     public BibliotecaApp(PrintStream outputStream) {
         this.checkOutBooks = new ArrayList<>();
@@ -21,6 +22,7 @@ public class BibliotecaApp {
         ));
         menu = Menu.getInstance();
         this.outputStream = outputStream;
+        library = new Library(outputStream);
     }
 
 
@@ -39,7 +41,7 @@ public class BibliotecaApp {
             outputStream.println("Enter your choice");
             outputStream.println(menu.getOptions());
             int choice = Integer.parseInt(bufferedReader.readLine());
-            outputStream.println(menu.enterOption(this, choice));
+            outputStream.println(menu.enterOption(this, library, choice));
         }
 
     }

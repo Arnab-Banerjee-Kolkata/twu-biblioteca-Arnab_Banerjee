@@ -11,10 +11,14 @@ import static org.mockito.Mockito.*;
 
 class MenuTest {
     Menu menu;
+    Library library;
+    BibliotecaApp bibliotecaApp;
 
     @BeforeEach
     void setUp() {
         menu = Menu.getInstance();
+        library = mock(Library.class);
+        bibliotecaApp = mock(BibliotecaApp.class);
     }
 
     @Test
@@ -33,47 +37,38 @@ class MenuTest {
 
     @Test
     void shouldShowBookListIfOneIsEntered() throws IOException {
-        BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
+        menu.enterOption(bibliotecaApp, library, 1);
 
-        menu.enterOption(bibliotecaApp, 1);
-
-        verify(bibliotecaApp, times(1)).showBooks();
+        verify(library, times(1)).showBooks();
     }
 
     @Test
     void shouldShowMessageWhenInvalidOptionIsEntered() throws IOException {
-        BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
         String expectedMessage = "Please select a valid option!";
 
-        String actualMessage = menu.enterOption(bibliotecaApp, -1);
+        String actualMessage = menu.enterOption(bibliotecaApp, library, -1);
 
         assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
     void shouldCallExitFunctionalityOfBibliotecaAppWhenExitOptionIsEntered() throws IOException {
-        BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
-
-        menu.enterOption(bibliotecaApp, 2);
+        menu.enterOption(bibliotecaApp, library, 2);
 
         verify(bibliotecaApp, times(1)).exit();
     }
 
     @Test
     void shouldCallCheckOutFunctionalityOfBibliotecaAppOnEnteringCheckOutOption() throws IOException {
-        BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
+        menu.enterOption(bibliotecaApp, library, 3);
 
-        menu.enterOption(bibliotecaApp, 3);
-
-        verify(bibliotecaApp, times(1)).checkOutBook();
+        verify(library, times(1)).checkOutBook();
     }
 
     @Test
     void shouldCallReturnBookFunctionOfBibliotecaAppOnReturningBook() throws IOException {
-        BibliotecaApp bibliotecaApp = mock(BibliotecaApp.class);
+        menu.enterOption(bibliotecaApp, library, 4);
 
-        menu.enterOption(bibliotecaApp, 4);
-
-        verify(bibliotecaApp, times(1)).returnBook();
+        verify(library, times(1)).returnBook();
     }
 }

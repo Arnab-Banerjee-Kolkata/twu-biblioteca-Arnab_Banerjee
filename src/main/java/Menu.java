@@ -27,12 +27,12 @@ public class Menu {
         return this.menuOptions;
     }
 
-    public String enterOption(BibliotecaApp bibliotecaApp, int optionNumber) throws IOException {
+    public String enterOption(BibliotecaApp bibliotecaApp, Library library, int optionNumber) throws IOException {
         StringBuilder message = new StringBuilder();
         String[] listOfBooks;
         switch (optionNumber) {
             case 1:
-                message = new StringBuilder(bibliotecaApp.showBooks().toString());
+                message = new StringBuilder(library.showBooks().toString());
                 listOfBooks = message.toString().split(",");
                 message = new StringBuilder();
                 for (String item : listOfBooks)
@@ -42,14 +42,14 @@ public class Menu {
                 bibliotecaApp.exit();
                 break;
             case 3:
-                message.append(bibliotecaApp.checkOutBook());
+                message.append(library.checkOutBook());
                 listOfBooks = message.toString().split(",");
                 message = new StringBuilder();
                 for (String item : listOfBooks)
                     message.append(item).append("\n");
                 break;
             case 4:
-                message.append(bibliotecaApp.returnBook());
+                message.append(library.returnBook());
                 listOfBooks = message.toString().split(",");
                 message = new StringBuilder();
                 for (String item : listOfBooks)
