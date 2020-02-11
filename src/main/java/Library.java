@@ -52,7 +52,7 @@ public class Library {
     }
 
     public String returnBook() throws IOException {
-        String message = "";
+        String message;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         outputStream.println("Enter title");
         String bookTitle = bufferedReader.readLine();
