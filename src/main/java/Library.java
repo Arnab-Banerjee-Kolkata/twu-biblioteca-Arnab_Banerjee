@@ -50,4 +50,23 @@ public class Library {
         }
         return message;
     }
+
+    public void returnBook() throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        outputStream.println("Enter title");
+        String bookTitle = bufferedReader.readLine();
+        outputStream.println("Enter author name");
+        String authorName = bufferedReader.readLine();
+        outputStream.println("Enter year of publishing");
+        try {
+            int yearOfPublishing = Integer.parseInt(bufferedReader.readLine());
+            Book book = new Book(bookTitle, authorName, yearOfPublishing);
+            if (checkOutBooks.contains(book)) {
+                checkOutBooks.remove(book);
+                books.add(book);
+            }
+        } catch (NumberFormatException e) {
+        }
+    }
+
 }
