@@ -42,4 +42,15 @@ class LibraryTest {
 
         assertEquals(expectedBooks, actualBooks);
     }
+
+    @Test
+    void shouldNotifyUserWhenABookIsSuccessfullyCheckedOut() throws IOException {
+        String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        String expectedMessage = "Thank you! Enjoy the book";
+
+        String actualMessage = library.checkOutBook();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
 }
