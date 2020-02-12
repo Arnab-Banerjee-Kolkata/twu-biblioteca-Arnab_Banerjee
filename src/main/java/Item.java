@@ -1,7 +1,7 @@
-public interface Item {
-    String getDetails();
+abstract class Item {
+    abstract String getDetails();
 
-    boolean equals(Object object);
+    public abstract boolean equals(Object object);
 
-    int hashCode();
+    public abstract int hashCode();
 }

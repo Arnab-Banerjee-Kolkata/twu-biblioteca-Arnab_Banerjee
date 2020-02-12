@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MovieLibrary {
-    private List<Movie> movies;
+public class MovieLibrary implements Library {
+    private List<Item> movies;
 
     MovieLibrary() {
         this.movies = new ArrayList<>(Arrays.asList(
@@ -12,11 +12,21 @@ public class MovieLibrary {
         ));
     }
 
-    public List<String> showMovies() {
+    public List<String> showItems() {
         List<String> movieDetails = new ArrayList<>();
-        for (Movie movie : movies) {
+        for (Item movie : movies) {
             movieDetails.add(movie.getDetails());
         }
         return movieDetails;
+    }
+
+    @Override
+    public String checkOutItem(Item movie) {
+        return null;
+    }
+
+    @Override
+    public String returnItem(Item movie) {
+        return null;
     }
 }

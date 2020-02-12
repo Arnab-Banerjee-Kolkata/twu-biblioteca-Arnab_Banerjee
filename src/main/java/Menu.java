@@ -19,16 +19,16 @@ public class Menu {
         this.console = console;
     }
 
-
     public List<String> getOptions() {
         return this.menuOptions;
     }
 
+    //TODO-Make one library
     public String enterOption(BibliotecaApp bibliotecaApp, BookLibrary bookLibrary, MovieLibrary movieLibrary, int optionNumber) throws IOException {
         message = new StringBuilder();
         switch (optionNumber) {
             case 1:
-                message = new StringBuilder(bookLibrary.showBooks().toString());
+                message = new StringBuilder(bookLibrary.showItems().toString());
                 formMessage();
                 break;
             case 2:
@@ -36,22 +36,24 @@ public class Menu {
                 break;
             case 3:
                 Book book = console.readBook();
-                message.append(bookLibrary.checkOutBook(book));
+                message.append(bookLibrary.checkOutItem(book));
                 formMessage();
                 break;
             case 4:
                 book = console.readBook();
-                message.append(bookLibrary.returnBook(book));
+                message.append(bookLibrary.returnItem(book));
                 formMessage();
                 break;
             case 5:
-                message = new StringBuilder(movieLibrary.showMovies().toString());
+                message = new StringBuilder(movieLibrary.showItems().toString());
                 formMessage();
                 break;
             default:
                 message = new StringBuilder("Please select a valid option!");
         }
         return message.toString().trim();
+
+
     }
 
     private void formMessage() {

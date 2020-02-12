@@ -44,7 +44,7 @@ class MenuTest {
     void shouldShowBookListIfOneIsEntered() throws IOException {
         menu.enterOption(bibliotecaApp, bookLibrary, movieLibrary, 1);
 
-        verify(bookLibrary, times(1)).showBooks();
+        verify(bookLibrary, times(1)).showItems();
     }
 
     @Test
@@ -69,7 +69,7 @@ class MenuTest {
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         menu.enterOption(bibliotecaApp, bookLibrary, movieLibrary, 3);
 
-        verify(bookLibrary, times(1)).checkOutBook(new Book("Book_Name_2", "Author_Name_2", 1987));
+        verify(bookLibrary, times(1)).checkOutItem(new Book("Book_Name_2", "Author_Name_2", 1987));
     }
 
     @Test
@@ -78,14 +78,14 @@ class MenuTest {
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         menu.enterOption(bibliotecaApp, bookLibrary, movieLibrary, 4);
 
-        verify(bookLibrary, times(1)).returnBook(new Book("Book_Name_2", "Author_Name_2", 1987));
+        verify(bookLibrary, times(1)).returnItem(new Book("Book_Name_2", "Author_Name_2", 1987));
     }
 
     @Test
     void shouldShowMoviesOnSelectingShowMoviesOption() throws IOException {
         menu.enterOption(bibliotecaApp, bookLibrary, movieLibrary, 5);
 
-        verify(movieLibrary, times(1)).showMovies();
+        verify(movieLibrary, times(1)).showItems();
 
     }
 }

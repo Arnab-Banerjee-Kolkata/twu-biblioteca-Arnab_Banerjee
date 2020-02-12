@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Book implements Item {
+public class Book extends Item {
 
 
     private final String title;

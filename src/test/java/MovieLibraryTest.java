@@ -16,7 +16,7 @@ class MovieLibraryTest {
                 movie1.getDetails(), movie2.getDetails()
         ));
 
-        List<String> actualMovies = movieLibrary.showMovies();
+        List<String> actualMovies = movieLibrary.showItems();
 
         assertEquals(expectedMovies, actualMovies);
     }

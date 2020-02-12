@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BookLibrary {
-    private List<Book> books;
-    private List<Book> checkOutBooks;
+public class BookLibrary implements Library {
+    private List<Item> books;
+    private List<Item> checkOutBooks;
 
     BookLibrary() {
         checkOutBooks = new ArrayList<>();
@@ -14,15 +14,16 @@ public class BookLibrary {
         ));
     }
 
-    public List<String> showBooks() {
+    public List<String> showItems() {
         List<String> bookDetails = new ArrayList<>();
-        for (Book book : books) {
+        for (Item book : books) {
             bookDetails.add(book.getDetails());
         }
         return bookDetails;
     }
 
-    public String checkOutBook(Book book) {
+    @Override
+    public String checkOutItem(Item book) {
         String message;
 
         if (books.contains(book)) {
@@ -34,7 +35,8 @@ public class BookLibrary {
         return message;
     }
 
-    public String returnBook(Book book) {
+    @Override
+    public String returnItem(Item book) {
         String message;
         if (checkOutBooks.contains(book)) {
             checkOutBooks.remove(book);
