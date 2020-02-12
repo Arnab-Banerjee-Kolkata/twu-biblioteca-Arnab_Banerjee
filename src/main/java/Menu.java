@@ -11,9 +11,10 @@ public class Menu {
     Menu(Console console) {
         menuOptions = new ArrayList<>(Arrays.asList(
                 "1. Show Available Books",
-                "2. Exit",
-                "3. Checkout",
-                "4. Return"
+                "\n2. Exit",
+                "\n3. Checkout",
+                "\n4. Return",
+                "\n5. Show Available Movies"
         ));
         this.console = console;
     }

@@ -26,9 +26,10 @@ class MenuTest {
     void shouldShowMenuOptions() {
         List<String> expectedMenuOptions = new ArrayList<>(Arrays.asList(
                 "1. Show Available Books",
-                "2. Exit",
-                "3. Checkout",
-                "4. Return"
+                "\n2. Exit",
+                "\n3. Checkout",
+                "\n4. Return",
+                "\n5. Show Available Movies"
         ));
 
         List<String> actualMenuOptions = menu.getOptions();
@@ -53,14 +54,14 @@ class MenuTest {
     }
 
     @Test
-    void shouldCallExitFunctionalityOfBibliotecaAppWhenExitOptionIsEntered() throws IOException {
+    void shouldCallExitFunctionalityOfLibraryWhenExitOptionIsEntered() throws IOException {
         menu.enterOption(bibliotecaApp, library, 2);
 
         verify(bibliotecaApp, times(1)).exit();
     }
 
     @Test
-    void shouldCallCheckOutFunctionalityOfBibliotecaAppOnEnteringCheckOutOption() throws IOException {
+    void shouldCallCheckOutFunctionalityOfLibraryOnEnteringCheckOutOption() throws IOException {
         String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         menu.enterOption(bibliotecaApp, library, 3);
@@ -69,7 +70,7 @@ class MenuTest {
     }
 
     @Test
-    void shouldCallReturnBookFunctionOfBibliotecaAppOnReturningBook() throws IOException {
+    void shouldCallReturnBookFunctionOfLibraryOnReturningBook() throws IOException {
         String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         menu.enterOption(bibliotecaApp, library, 4);
