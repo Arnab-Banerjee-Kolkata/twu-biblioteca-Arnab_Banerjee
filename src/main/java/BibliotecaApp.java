@@ -13,7 +13,7 @@ public class BibliotecaApp {
 
     public BibliotecaApp(Console console) {
         this.console = console;
-        menu = new Menu();
+        menu = new Menu(console);
         library = new Library(console);
         isOpen = true;
         this.movies = new ArrayList<>(Arrays.asList(

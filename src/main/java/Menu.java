@@ -44,7 +44,7 @@ public class Menu {
                 bibliotecaApp.exit();
                 break;
             case 3:
-                message.append(library.checkOutBook());
+                message.append(library.checkOutBook(null));
                 formMessage();
                 break;
             case 4:

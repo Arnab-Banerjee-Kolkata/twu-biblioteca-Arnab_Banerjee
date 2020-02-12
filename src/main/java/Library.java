@@ -27,26 +27,15 @@ public class Library {
         return bookDetails;
     }
 
-    public String checkOutBook() throws IOException {
+    public String checkOutBook(Book book) throws IOException {
         String message;
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        console.println("Enter title");
-        String bookTitle = bufferedReader.readLine();
-        console.println("Enter author name");
-        String authorName = bufferedReader.readLine();
-        console.println("Enter year of publishing");
-        try {
-            int yearOfPublishing = Integer.parseInt(bufferedReader.readLine());
-            Book book = new Book(bookTitle, authorName, yearOfPublishing);
-            if (books.contains(book)) {
-                message = "Thank you! Enjoy the book";
-                checkOutBooks.add(book);
-            } else
-                message = "Sorry, that book is not available";
+
+        if (books.contains(book)) {
+            message = "Thank you! Enjoy the book";
+            checkOutBooks.add(book);
             books.remove(book);
-        } catch (NumberFormatException e) {
-            message = "Invalid Input";
-        }
+        } else
+            message = "Sorry, that book is not available";
         return message;
     }
 

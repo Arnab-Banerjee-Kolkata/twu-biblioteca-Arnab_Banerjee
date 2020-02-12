@@ -16,7 +16,7 @@ class MenuTest {
 
     @BeforeEach
     void setUp() {
-        menu = new Menu();
+        menu = new Menu(new Console(System.out));
         library = mock(Library.class);
         bibliotecaApp = mock(BibliotecaApp.class);
     }
@@ -62,7 +62,7 @@ class MenuTest {
     void shouldCallCheckOutFunctionalityOfBibliotecaAppOnEnteringCheckOutOption() throws IOException {
         menu.enterOption(bibliotecaApp, library, 3);
 
-        verify(library, times(1)).checkOutBook();
+        verify(library, times(1)).checkOutBook(null);
     }
 
     @Test

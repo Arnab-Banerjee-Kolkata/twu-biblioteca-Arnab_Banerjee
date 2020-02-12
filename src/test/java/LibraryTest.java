@@ -34,10 +34,9 @@ class LibraryTest {
     void shouldLetUserCheckoutABook() throws IOException {
         Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
         List<String> expectedBooks = new ArrayList<>(Collections.singletonList(book1.getDetails()));
-        String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
 
-        library.checkOutBook();
+        library.checkOutBook(book2);
         List<String> actualBooks = library.showBooks();
 
         assertEquals(expectedBooks, actualBooks);
@@ -45,22 +44,20 @@ class LibraryTest {
 
     @Test
     void shouldNotifyUserWhenABookIsSuccessfullyCheckedOut() throws IOException {
-        String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Book book = new Book("Book_Name_2", "Author_Name_2", 1987);
         String expectedMessage = "Thank you! Enjoy the book";
 
-        String actualMessage = library.checkOutBook();
+        String actualMessage = library.checkOutBook(book);
 
         assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
     void shouldNotifyUserWhenABookCannotBeCheckedOut() throws IOException {
-        String simulatedInput = "Book_Name_3\nAuthor_Name_3\n1991";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Book book = new Book("Book_Name_3", "Author_Name_3", 1999);
         String expectedMessage = "Sorry, that book is not available";
 
-        String actualMessage = library.checkOutBook();
+        String actualMessage = library.checkOutBook(book);
 
         assertEquals(expectedMessage, actualMessage);
     }
@@ -73,7 +70,7 @@ class LibraryTest {
         String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
-        library.checkOutBook();
+        library.checkOutBook(null);
         simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         library.returnBook();
@@ -84,12 +81,11 @@ class LibraryTest {
 
     @Test
     void shouldNotifyUserWhenABookIsSuccessfullyReturned() throws IOException {
-        String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Book book = new Book("Book_Name_2", "Author_Name_2", 1987);
         String expectedMessage = "Thank you for returning the book";
 
-        library.checkOutBook();
-        simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
+        library.checkOutBook(book);
+        String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         String actualMessage = library.returnBook();
 
@@ -103,17 +99,6 @@ class LibraryTest {
         String simulatedInput = "Book_Name_3\nAuthor_Name_3\n1991";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         String actualMessage = library.returnBook();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    void shouldDisplayMessageOnEnteringInvalidInputDuringCheckout() throws IOException {
-        String simulatedInput = "Book_Name_2\nAuthor_Name_2\na";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        String expectedMessage = "Invalid Input";
-
-        String actualMessage = library.checkOutBook();
 
         assertEquals(expectedMessage, actualMessage);
     }
