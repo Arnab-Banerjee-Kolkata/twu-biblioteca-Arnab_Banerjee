@@ -18,4 +18,8 @@ public class Console {
     public void print(String value) {
         outputStream.print(value);
     }
+
+    public void println(String value) {
+        outputStream.println(value);
+    }
 }

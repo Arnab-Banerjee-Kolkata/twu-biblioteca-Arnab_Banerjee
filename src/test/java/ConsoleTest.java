@@ -36,4 +36,14 @@ class ConsoleTest {
 
         verify(printStream, times(1)).print("Name: ThoughtWorks");
     }
+
+    @Test
+    void shouldPrintToConsumerInNewLine() {
+        PrintStream printStream = mock(PrintStream.class);
+        console = new Console(printStream);
+
+        console.println("Name: ThoughtWorks");
+
+        verify(printStream, times(1)).println("Name: ThoughtWorks");
+    }
 }
