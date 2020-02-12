@@ -77,4 +77,12 @@ class MenuTest {
 
         verify(library, times(1)).returnBook(new Book("Book_Name_2", "Author_Name_2", 1987));
     }
+
+    @Test
+    void shouldShowMoviesOnSelectingShowMoviesOption() throws IOException {
+        menu.enterOption(bibliotecaApp, library, 5);
+
+        verify(bibliotecaApp, times(1)).showMovies();
+
+    }
 }

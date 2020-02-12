@@ -44,6 +44,8 @@ public class Menu {
                 message.append(library.returnBook(book));
                 formMessage();
                 break;
+            case 5:
+                message = new StringBuilder(bibliotecaApp.showMovies().toString());
             default:
                 message = new StringBuilder("Please select a valid option!");
         }
@@ -51,10 +53,10 @@ public class Menu {
     }
 
     private void formMessage() {
-        String[] listOfBooks;
-        listOfBooks = message.toString().split(",");
+        String[] listOfItems;
+        listOfItems = message.toString().split(",");
         message = new StringBuilder();
-        for (String item : listOfBooks)
+        for (String item : listOfItems)
             message.append(item).append("\n");
     }
 }
