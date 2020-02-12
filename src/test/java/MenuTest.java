@@ -65,7 +65,7 @@ class MenuTest {
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         menu.enterOption(bibliotecaApp, library, 3);
 
-        verify(library, times(1)).checkOutBook(mock(Book.class));
+        verify(library, times(1)).checkOutBook(new Book("Book_Name_2", "Author_Name_2", 1987));
     }
 
     @Test
