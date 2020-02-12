@@ -27,7 +27,8 @@ public class BibliotecaApp {
         showWelcomeMessage();
         do {
             console.println("Enter your choice");
-            console.println(menu.getOptions().toString());
+            String menuOptions = menu.getOptions().toString();
+            console.println(menuOptions.substring(1, menuOptions.length() - 1));
             int choice = Integer.parseInt(console.readLine());
             console.println(menu.enterOption(choice));
         } while (isOpen);

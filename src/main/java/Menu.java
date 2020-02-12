@@ -30,8 +30,9 @@ public class Menu {
         return this.menuOptions;
     }
 
+
     //TODO-Make one library
-    //TODO-Make different classes
+    //TODO-Make different classes after completing requirements
     public String enterOption(int optionNumber) throws IOException {
         message = new StringBuilder();
         switch (optionNumber) {
