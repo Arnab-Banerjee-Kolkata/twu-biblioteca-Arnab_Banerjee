@@ -24,11 +24,11 @@ public class Menu {
         return this.menuOptions;
     }
 
-    public String enterOption(BibliotecaApp bibliotecaApp, Library library, MovieLibrary movieLibrary, int optionNumber) throws IOException {
+    public String enterOption(BibliotecaApp bibliotecaApp, BookLibrary bookLibrary, MovieLibrary movieLibrary, int optionNumber) throws IOException {
         message = new StringBuilder();
         switch (optionNumber) {
             case 1:
-                message = new StringBuilder(library.showBooks().toString());
+                message = new StringBuilder(bookLibrary.showBooks().toString());
                 formMessage();
                 break;
             case 2:
@@ -36,12 +36,12 @@ public class Menu {
                 break;
             case 3:
                 Book book = console.readBook();
-                message.append(library.checkOutBook(book));
+                message.append(bookLibrary.checkOutBook(book));
                 formMessage();
                 break;
             case 4:
                 book = console.readBook();
-                message.append(library.returnBook(book));
+                message.append(bookLibrary.returnBook(book));
                 formMessage();
                 break;
             case 5:

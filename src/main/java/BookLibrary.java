@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Library {
+public class BookLibrary {
     private List<Book> books;
     private List<Book> checkOutBooks;
 
-    Library() {
+    BookLibrary() {
         checkOutBooks = new ArrayList<>();
         this.books = new ArrayList<>(Arrays.asList(
                 new Book("Book_Name_1", "Author_Name_1", 1998),

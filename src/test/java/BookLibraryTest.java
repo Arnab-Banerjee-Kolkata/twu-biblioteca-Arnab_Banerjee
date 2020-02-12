@@ -8,12 +8,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class LibraryTest {
-    Library library;
+class BookLibraryTest {
+    BookLibrary bookLibrary;
 
     @BeforeEach
     void setup() {
-        library = new Library();
+        bookLibrary = new BookLibrary();
     }
 
     @Test
@@ -22,7 +22,7 @@ class LibraryTest {
         Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
         List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getDetails(), book2.getDetails()));
 
-        List<String> actualBooks = library.showBooks();
+        List<String> actualBooks = bookLibrary.showBooks();
 
         assertEquals(expectedBooks, actualBooks);
 
@@ -34,8 +34,8 @@ class LibraryTest {
         List<String> expectedBooks = new ArrayList<>(Collections.singletonList(book1.getDetails()));
         Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
 
-        library.checkOutBook(book2);
-        List<String> actualBooks = library.showBooks();
+        bookLibrary.checkOutBook(book2);
+        List<String> actualBooks = bookLibrary.showBooks();
 
         assertEquals(expectedBooks, actualBooks);
     }
@@ -45,7 +45,7 @@ class LibraryTest {
         Book book = new Book("Book_Name_2", "Author_Name_2", 1987);
         String expectedMessage = "Thank you! Enjoy the book";
 
-        String actualMessage = library.checkOutBook(book);
+        String actualMessage = bookLibrary.checkOutBook(book);
 
         assertEquals(expectedMessage, actualMessage);
     }
@@ -55,7 +55,7 @@ class LibraryTest {
         Book book = new Book("Book_Name_3", "Author_Name_3", 1999);
         String expectedMessage = "Sorry, that book is not available";
 
-        String actualMessage = library.checkOutBook(book);
+        String actualMessage = bookLibrary.checkOutBook(book);
 
         assertEquals(expectedMessage, actualMessage);
     }
@@ -66,9 +66,9 @@ class LibraryTest {
         Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
         List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getDetails(), book2.getDetails()));
 
-        library.checkOutBook(book2);
-        library.returnBook(book2);
-        List<String> actualBooks = library.showBooks();
+        bookLibrary.checkOutBook(book2);
+        bookLibrary.returnBook(book2);
+        List<String> actualBooks = bookLibrary.showBooks();
 
         assertEquals(expectedBooks, actualBooks);
     }
@@ -78,8 +78,8 @@ class LibraryTest {
         Book book = new Book("Book_Name_2", "Author_Name_2", 1987);
         String expectedMessage = "Thank you for returning the book";
 
-        library.checkOutBook(book);
-        String actualMessage = library.returnBook(book);
+        bookLibrary.checkOutBook(book);
+        String actualMessage = bookLibrary.returnBook(book);
 
         assertEquals(expectedMessage, actualMessage);
     }
@@ -89,7 +89,7 @@ class LibraryTest {
         String expectedMessage = "That is not a valid book to return.";
         Book book = new Book("Book_Name_3", "Author_Name_3", 1999);
 
-        String actualMessage = library.returnBook(book);
+        String actualMessage = bookLibrary.returnBook(book);
 
         assertEquals(expectedMessage, actualMessage);
     }
