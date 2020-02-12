@@ -18,9 +18,10 @@ public class Menu {
         menuOptions = new ArrayList<>(Arrays.asList(
                 "1. Show Available Books",
                 "\n2. Exit",
-                "\n3. Checkout",
-                "\n4. Return",
-                "\n5. Show Available Movies"
+                "\n3. Checkout Book",
+                "\n4. Return Book",
+                "\n5. Show Available Movies",
+                "\n6. Checkout Movie"
         ));
         this.console = console;
     }
@@ -30,7 +31,7 @@ public class Menu {
     }
 
     //TODO-Make one library
-    //TODO-Pass in constructor
+    //TODO-Make different classes
     public String enterOption(int optionNumber) throws IOException {
         message = new StringBuilder();
         switch (optionNumber) {
@@ -55,6 +56,9 @@ public class Menu {
                 message = new StringBuilder(movieLibrary.showItems().toString());
                 formMessage();
                 break;
+            case 6:
+                Movie movie = new Movie("Movie_2", 1987, "Director_2", 8.5);
+                movieLibrary.checkOutItem(movie);
             default:
                 message = new StringBuilder("Please select a valid option!");
         }

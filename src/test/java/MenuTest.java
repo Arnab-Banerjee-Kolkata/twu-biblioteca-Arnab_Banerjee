@@ -30,9 +30,10 @@ class MenuTest {
         List<String> expectedMenuOptions = new ArrayList<>(Arrays.asList(
                 "1. Show Available Books",
                 "\n2. Exit",
-                "\n3. Checkout",
-                "\n4. Return",
-                "\n5. Show Available Movies"
+                "\n3. Checkout Book",
+                "\n4. Return Book",
+                "\n5. Show Available Movies",
+                "\n6. Checkout Movie"
         ));
 
         List<String> actualMenuOptions = menu.getOptions();
@@ -64,7 +65,7 @@ class MenuTest {
     }
 
     @Test
-    void shouldCallCheckOutFunctionalityOfLibraryOnEnteringCheckOutOption() throws IOException {
+    void shouldCallCheckOutFunctionalityOfBookLibraryOnEnteringCheckOutOption() throws IOException {
         String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         menu.enterOption(3);
@@ -87,5 +88,15 @@ class MenuTest {
 
         verify(movieLibrary, times(1)).showItems();
 
+    }
+
+    @Test
+    void shouldCallCheckOutFunctionalityOfMovieLibraryOnEnteringCheckOutOption() throws IOException {
+        String simulatedInput = "Movie_2\n1987\nDirector_2\n8.5";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        menu.enterOption(6);
+
+        verify(movieLibrary, times(1)).checkOutItem(new Movie("Movie_2", 1987, "Director_2",
+                8.5));
     }
 }
