@@ -1,7 +1,7 @@
 import java.text.DecimalFormat;
 import java.util.Objects;
 
-public class Movie {
+public class Movie implements Item {
     private final String name;
     private final int yearOfRelease;
     private final String directorName;
