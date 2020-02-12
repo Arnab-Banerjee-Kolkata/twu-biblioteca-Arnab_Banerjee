@@ -18,11 +18,11 @@ class MenuTest {
 
     @BeforeEach
     void setUp() {
-        menu = new Menu(new Console(System.out));
         bookLibrary = mock(BookLibrary.class);
         bibliotecaApp = mock(BibliotecaApp.class);
-        movieLibrary = mock(MovieLibrary.class)
-        ;
+        movieLibrary = mock(MovieLibrary.class);
+        menu = new Menu(new Console(System.out), bibliotecaApp, bookLibrary, movieLibrary);
+
     }
 
     @Test
@@ -42,7 +42,7 @@ class MenuTest {
 
     @Test
     void shouldShowBookListIfOneIsEntered() throws IOException {
-        menu.enterOption(bibliotecaApp, bookLibrary, movieLibrary, 1);
+        menu.enterOption(1);
 
         verify(bookLibrary, times(1)).showItems();
     }
@@ -51,14 +51,14 @@ class MenuTest {
     void shouldShowMessageWhenInvalidOptionIsEntered() throws IOException {
         String expectedMessage = "Please select a valid option!";
 
-        String actualMessage = menu.enterOption(bibliotecaApp, bookLibrary, movieLibrary, -1);
+        String actualMessage = menu.enterOption(-1);
 
         assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
     void shouldCallExitFunctionalityOfLibraryWhenExitOptionIsEntered() throws IOException {
-        menu.enterOption(bibliotecaApp, bookLibrary, movieLibrary, 2);
+        menu.enterOption(2);
 
         verify(bibliotecaApp, times(1)).exit();
     }
@@ -67,7 +67,7 @@ class MenuTest {
     void shouldCallCheckOutFunctionalityOfLibraryOnEnteringCheckOutOption() throws IOException {
         String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        menu.enterOption(bibliotecaApp, bookLibrary, movieLibrary, 3);
+        menu.enterOption(3);
 
         verify(bookLibrary, times(1)).checkOutItem(new Book("Book_Name_2", "Author_Name_2", 1987));
     }
@@ -76,14 +76,14 @@ class MenuTest {
     void shouldCallReturnBookFunctionOfLibraryOnReturningBook() throws IOException {
         String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        menu.enterOption(bibliotecaApp, bookLibrary, movieLibrary, 4);
+        menu.enterOption(4);
 
         verify(bookLibrary, times(1)).returnItem(new Book("Book_Name_2", "Author_Name_2", 1987));
     }
 
     @Test
     void shouldShowMoviesOnSelectingShowMoviesOption() throws IOException {
-        menu.enterOption(bibliotecaApp, bookLibrary, movieLibrary, 5);
+        menu.enterOption(5);
 
         verify(movieLibrary, times(1)).showItems();
 

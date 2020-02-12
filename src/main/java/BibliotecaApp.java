@@ -4,16 +4,14 @@ public class BibliotecaApp {
 
     private boolean isOpen;
     private Menu menu;
-    private BookLibrary bookLibrary;
-    private MovieLibrary movieLibrary;
     private Console console;
 
     public BibliotecaApp(Console console) {
         this.console = console;
-        menu = new Menu(console);
-        bookLibrary = new BookLibrary();
+        BookLibrary bookLibrary = new BookLibrary();
         isOpen = true;
-        movieLibrary = new MovieLibrary();
+        MovieLibrary movieLibrary = new MovieLibrary();
+        menu = new Menu(console, this, bookLibrary, movieLibrary);
     }
 
 
@@ -31,7 +29,7 @@ public class BibliotecaApp {
             console.println("Enter your choice");
             console.println(menu.getOptions().toString());
             int choice = Integer.parseInt(console.readLine());
-            console.println(menu.enterOption(this, bookLibrary, movieLibrary, choice));
+            console.println(menu.enterOption(choice));
         } while (isOpen);
 
     }

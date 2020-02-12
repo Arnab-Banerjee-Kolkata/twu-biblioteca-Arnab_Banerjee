@@ -4,11 +4,17 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Menu {
+    private BibliotecaApp bibliotecaApp;
+    private BookLibrary bookLibrary;
+    private MovieLibrary movieLibrary;
     private List<String> menuOptions;
     private StringBuilder message;
     private Console console;
 
-    Menu(Console console) {
+    Menu(Console console, BibliotecaApp bibliotecaApp, BookLibrary bookLibrary, MovieLibrary movieLibrary) {
+        this.bibliotecaApp = bibliotecaApp;
+        this.bookLibrary = bookLibrary;
+        this.movieLibrary = movieLibrary;
         menuOptions = new ArrayList<>(Arrays.asList(
                 "1. Show Available Books",
                 "\n2. Exit",
@@ -25,7 +31,7 @@ public class Menu {
 
     //TODO-Make one library
     //TODO-Pass in constructor
-    public String enterOption(BibliotecaApp bibliotecaApp, BookLibrary bookLibrary, MovieLibrary movieLibrary, int optionNumber) throws IOException {
+    public String enterOption(int optionNumber) throws IOException {
         message = new StringBuilder();
         switch (optionNumber) {
             case 1:
