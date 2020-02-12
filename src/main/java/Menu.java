@@ -24,6 +24,7 @@ public class Menu {
     }
 
     //TODO-Make one library
+    //TODO-Pass in constructor
     public String enterOption(BibliotecaApp bibliotecaApp, BookLibrary bookLibrary, MovieLibrary movieLibrary, int optionNumber) throws IOException {
         message = new StringBuilder();
         switch (optionNumber) {

@@ -22,6 +22,7 @@ public class MovieLibrary implements Library {
 
     @Override
     public String checkOutItem(Item movie) {
+        movies.remove(movie);
         return null;
     }
 
