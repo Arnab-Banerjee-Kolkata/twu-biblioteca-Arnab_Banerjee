@@ -45,11 +45,11 @@ public class BibliotecaApp {
 
     }
 
-    public String showMovies() {
-        String movieDetails = "";
+    public List<String> showMovies() {
+        List<String> movieDetails = new ArrayList<>();
         for (Movie movie : movies) {
-            movieDetails += movie.getDetails() + "\n";
+            movieDetails.add(movie.getDetails());
         }
-        return movieDetails.trim();
+        return movieDetails;
     }
 }
