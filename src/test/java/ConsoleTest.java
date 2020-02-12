@@ -46,4 +46,15 @@ class ConsoleTest {
 
         verify(printStream, times(1)).println("Name: ThoughtWorks");
     }
+
+    @Test
+    void shouldTakeDetailsOfBookAndReturnABook() throws IOException {
+        String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Book expectedBook = new Book("Book_Name_2", "Author_Name_2", 1987);
+
+        Book actualBook = console.readBook();
+
+        assertEquals(expectedBook, actualBook);
+    }
 }

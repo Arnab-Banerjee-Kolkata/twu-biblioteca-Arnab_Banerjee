@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,15 +61,19 @@ class MenuTest {
 
     @Test
     void shouldCallCheckOutFunctionalityOfBibliotecaAppOnEnteringCheckOutOption() throws IOException {
+        String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         menu.enterOption(bibliotecaApp, library, 3);
 
-        verify(library, times(1)).checkOutBook(null);
+        verify(library, times(1)).checkOutBook(mock(Book.class));
     }
 
     @Test
     void shouldCallReturnBookFunctionOfBibliotecaAppOnReturningBook() throws IOException {
+        String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         menu.enterOption(bibliotecaApp, library, 4);
 
-        verify(library, times(1)).returnBook(null);
+        verify(library, times(1)).returnBook(new Book("Book_Name_2", "Author_Name_2", 1987));
     }
 }

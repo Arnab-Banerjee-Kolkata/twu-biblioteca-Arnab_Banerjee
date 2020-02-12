@@ -18,22 +18,12 @@ public class Menu {
         this.console = console;
     }
 
-    private Book readBook() throws IOException {
-        console.println("Enter book title:");
-        String title = console.readLine();
-        console.println("Enter author name:");
-        String authorName = console.readLine();
-        console.println("Enter year of publishing:");
-        int yearOfPublishing = Integer.parseInt(console.readLine());
-        return new Book(title, authorName, yearOfPublishing);
-    }
-
 
     public List<String> getOptions() {
         return this.menuOptions;
     }
 
-    public String enterOption(BibliotecaApp bibliotecaApp, Library library, int optionNumber) {
+    public String enterOption(BibliotecaApp bibliotecaApp, Library library, int optionNumber) throws IOException {
         message = new StringBuilder();
         switch (optionNumber) {
             case 1:
@@ -44,11 +34,13 @@ public class Menu {
                 bibliotecaApp.exit();
                 break;
             case 3:
-                message.append(library.checkOutBook(null));
+                Book book = console.readBook();
+                message.append(library.checkOutBook(book));
                 formMessage();
                 break;
             case 4:
-                message.append(library.returnBook(null));
+                book = console.readBook();
+                message.append(library.returnBook(book));
                 formMessage();
                 break;
             default:

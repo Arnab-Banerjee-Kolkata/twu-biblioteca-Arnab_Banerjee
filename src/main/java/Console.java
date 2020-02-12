@@ -22,4 +22,15 @@ public class Console {
     public void println(String value) {
         outputStream.println(value);
     }
+
+    public Book readBook() throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        this.println("Enter book title:");
+        String title = bufferedReader.readLine();
+        this.println("Enter author name:");
+        String authorName = bufferedReader.readLine();
+        this.println("Enter year of publishing:");
+        int yearOfPublishing = Integer.parseInt(bufferedReader.readLine());
+        return new Book(title, authorName, yearOfPublishing);
+    }
 }
