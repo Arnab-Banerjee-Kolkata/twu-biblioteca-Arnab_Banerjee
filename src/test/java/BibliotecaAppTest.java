@@ -8,7 +8,7 @@ class BibliotecaAppTest {
 
     @BeforeEach
     void setup() {
-        bibliotecaApp = new BibliotecaApp(System.out);
+        bibliotecaApp = new BibliotecaApp(new Console(System.out));
     }
 
     @Test

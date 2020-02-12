@@ -15,7 +15,7 @@ class LibraryTest {
 
     @BeforeEach
     void setup() {
-        library = new Library(System.out);
+        library = new Library(new Console(System.out));
     }
 
     @Test

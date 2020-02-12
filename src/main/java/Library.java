@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,10 +8,10 @@ import java.util.List;
 public class Library {
     private List<Book> books;
     private List<Book> checkOutBooks;
-    private PrintStream outputStream;
+    private Console console;
 
-    Library(PrintStream outputStream) {
-        this.outputStream = outputStream;
+    Library(Console console) {
+        this.console = console;
         checkOutBooks = new ArrayList<>();
         this.books = new ArrayList<>(Arrays.asList(
                 new Book("Book_Name_1", "Author_Name_1", 1998),
@@ -31,11 +30,11 @@ public class Library {
     public String checkOutBook() throws IOException {
         String message;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        outputStream.println("Enter title");
+        console.println("Enter title");
         String bookTitle = bufferedReader.readLine();
-        outputStream.println("Enter author name");
+        console.println("Enter author name");
         String authorName = bufferedReader.readLine();
-        outputStream.println("Enter year of publishing");
+        console.println("Enter year of publishing");
         try {
             int yearOfPublishing = Integer.parseInt(bufferedReader.readLine());
             Book book = new Book(bookTitle, authorName, yearOfPublishing);
@@ -54,11 +53,11 @@ public class Library {
     public String returnBook() throws IOException {
         String message;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        outputStream.println("Enter title");
+        console.println("Enter title");
         String bookTitle = bufferedReader.readLine();
-        outputStream.println("Enter author name");
+        console.println("Enter author name");
         String authorName = bufferedReader.readLine();
-        outputStream.println("Enter year of publishing");
+        console.println("Enter year of publishing");
         try {
             int yearOfPublishing = Integer.parseInt(bufferedReader.readLine());
             Book book = new Book(bookTitle, authorName, yearOfPublishing);

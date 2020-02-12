@@ -1,19 +1,18 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
 
 public class BibliotecaApp {
 
     private boolean isOpen;
     Menu menu;
-    PrintStream outputStream;
     private Library library;
+    private Console console;
 
-    public BibliotecaApp(PrintStream outputStream) {
+    public BibliotecaApp(Console console) {
+        this.console = console;
         menu = new Menu();
-        this.outputStream = outputStream;
-        library = new Library(outputStream);
+        library = new Library(console);
         isOpen = true;
     }
 
@@ -30,10 +29,10 @@ public class BibliotecaApp {
         showWelcomeMessage();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         do {
-            outputStream.println("Enter your choice");
-            outputStream.println(menu.getOptions());
+            console.println("Enter your choice");
+            console.println(menu.getOptions().toString());
             int choice = Integer.parseInt(bufferedReader.readLine());
-            outputStream.println(menu.enterOption(this, library, choice));
+            console.println(menu.enterOption(this, library, choice));
         } while (isOpen);
 
     }
