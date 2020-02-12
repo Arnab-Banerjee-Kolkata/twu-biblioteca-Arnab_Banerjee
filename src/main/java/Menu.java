@@ -46,6 +46,8 @@ public class Menu {
                 break;
             case 5:
                 message = new StringBuilder(bibliotecaApp.showMovies().toString());
+                formMessage();
+                break;
             default:
                 message = new StringBuilder("Please select a valid option!");
         }
