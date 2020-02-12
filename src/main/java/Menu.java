@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Menu {
     private List<String> menuOptions;
+    StringBuilder message;
 
     Menu() {
         menuOptions = new ArrayList<>(Arrays.asList(
@@ -21,36 +22,34 @@ public class Menu {
     }
 
     public String enterOption(BibliotecaApp bibliotecaApp, Library library, int optionNumber) throws IOException {
-        StringBuilder message = new StringBuilder();
-        String[] listOfBooks;
+        message = new StringBuilder();
         switch (optionNumber) {
             case 1:
                 message = new StringBuilder(library.showBooks().toString());
-                listOfBooks = message.toString().split(",");
-                message = new StringBuilder();
-                for (String item : listOfBooks)
-                    message.append(item).append("\n");
+                formMessage();
                 break;
             case 2:
                 bibliotecaApp.exit();
                 break;
             case 3:
                 message.append(library.checkOutBook());
-                listOfBooks = message.toString().split(",");
-                message = new StringBuilder();
-                for (String item : listOfBooks)
-                    message.append(item).append("\n");
+                formMessage();
                 break;
             case 4:
                 message.append(library.returnBook());
-                listOfBooks = message.toString().split(",");
-                message = new StringBuilder();
-                for (String item : listOfBooks)
-                    message.append(item).append("\n");
+                formMessage();
                 break;
             default:
                 message = new StringBuilder("Please select a valid option!");
         }
         return message.toString().trim();
+    }
+
+    private void formMessage() {
+        String[] listOfBooks;
+        listOfBooks = message.toString().split(",");
+        message = new StringBuilder();
+        for (String item : listOfBooks)
+            message.append(item).append("\n");
     }
 }
