@@ -24,6 +24,7 @@ class BibliotecaAppTest {
     }
 
     @Test
+        // -TODO- Delete
     void shouldShowAvailableMovies() {
         Movie movie1 = new Movie("Movie_1", 1998, "Director_1", 9);
         Movie movie2 = new Movie("Movie_2", 1987, "Director_2", 8.5);

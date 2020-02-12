@@ -19,7 +19,7 @@ public class BibliotecaApp {
         this.movies = new ArrayList<>(Arrays.asList(
                 new Movie("Movie_1", 1998, "Director_1", 9),
                 new Movie("Movie_2", 1987, "Director_2", 8.5)
-        ));
+        )); // -TODO- delete
     }
 
 
@@ -48,5 +48,5 @@ public class BibliotecaApp {
             movieDetails.add(movie.getDetails());
         }
         return movieDetails;
-    }
+    } //--TODO delete
 }
