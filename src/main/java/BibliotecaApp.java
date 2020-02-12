@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,11 +33,10 @@ public class BibliotecaApp {
 
     public void startApp() throws IOException {
         showWelcomeMessage();
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         do {
             console.println("Enter your choice");
             console.println(menu.getOptions().toString());
-            int choice = Integer.parseInt(bufferedReader.readLine());
+            int choice = Integer.parseInt(console.readLine());
             console.println(menu.enterOption(this, library, choice));
         } while (isOpen);
 
