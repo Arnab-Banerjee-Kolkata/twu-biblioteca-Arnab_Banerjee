@@ -69,6 +69,6 @@ class MenuTest {
     void shouldCallReturnBookFunctionOfBibliotecaAppOnReturningBook() throws IOException {
         menu.enterOption(bibliotecaApp, library, 4);
 
-        verify(library, times(1)).returnBook();
+        verify(library, times(1)).returnBook(null);
     }
 }

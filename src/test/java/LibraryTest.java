@@ -1,8 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,7 +13,7 @@ class LibraryTest {
 
     @BeforeEach
     void setup() {
-        library = new Library(new Console(System.out));
+        library = new Library();
     }
 
     @Test
@@ -31,7 +29,7 @@ class LibraryTest {
     }
 
     @Test
-    void shouldLetUserCheckoutABook() throws IOException {
+    void shouldLetUserCheckoutABook() {
         Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
         List<String> expectedBooks = new ArrayList<>(Collections.singletonList(book1.getDetails()));
         Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
@@ -43,7 +41,7 @@ class LibraryTest {
     }
 
     @Test
-    void shouldNotifyUserWhenABookIsSuccessfullyCheckedOut() throws IOException {
+    void shouldNotifyUserWhenABookIsSuccessfullyCheckedOut() {
         Book book = new Book("Book_Name_2", "Author_Name_2", 1987);
         String expectedMessage = "Thank you! Enjoy the book";
 
@@ -53,7 +51,7 @@ class LibraryTest {
     }
 
     @Test
-    void shouldNotifyUserWhenABookCannotBeCheckedOut() throws IOException {
+    void shouldNotifyUserWhenABookCannotBeCheckedOut() {
         Book book = new Book("Book_Name_3", "Author_Name_3", 1999);
         String expectedMessage = "Sorry, that book is not available";
 
@@ -63,53 +61,35 @@ class LibraryTest {
     }
 
     @Test
-    void shouldAllowUserToReturnABook() throws IOException {
+    void shouldAllowUserToReturnABook() {
         Book book1 = new Book("Book_Name_1", "Author_Name_1", 1998);
         Book book2 = new Book("Book_Name_2", "Author_Name_2", 1987);
         List<String> expectedBooks = new ArrayList<>(Arrays.asList(book1.getDetails(), book2.getDetails()));
-        String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
-        library.checkOutBook(null);
-        simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        library.returnBook();
+        library.checkOutBook(book2);
+        library.returnBook(book2);
         List<String> actualBooks = library.showBooks();
 
         assertEquals(expectedBooks, actualBooks);
     }
 
     @Test
-    void shouldNotifyUserWhenABookIsSuccessfullyReturned() throws IOException {
+    void shouldNotifyUserWhenABookIsSuccessfullyReturned() {
         Book book = new Book("Book_Name_2", "Author_Name_2", 1987);
         String expectedMessage = "Thank you for returning the book";
 
         library.checkOutBook(book);
-        String simulatedInput = "Book_Name_2\nAuthor_Name_2\n1987";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        String actualMessage = library.returnBook();
+        String actualMessage = library.returnBook(book);
 
         assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
-    void shouldNotifyUserIfBookIsNotSuccessfullyReturned() throws IOException {
+    void shouldNotifyUserIfBookIsNotSuccessfullyReturned() {
         String expectedMessage = "That is not a valid book to return.";
+        Book book = new Book("Book_Name_3", "Author_Name_3", 1999);
 
-        String simulatedInput = "Book_Name_3\nAuthor_Name_3\n1991";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        String actualMessage = library.returnBook();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    void shouldDisplayMessageOnEnteringInvalidInputDuringReturningBook() throws IOException {
-        String simulatedInput = "Book_Name_2\nAuthor_Name_2\naa";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        String expectedMessage = "Invalid Input";
-
-        String actualMessage = library.returnBook();
+        String actualMessage = library.returnBook(book);
 
         assertEquals(expectedMessage, actualMessage);
     }

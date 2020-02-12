@@ -14,7 +14,7 @@ public class BibliotecaApp {
     public BibliotecaApp(Console console) {
         this.console = console;
         menu = new Menu(console);
-        library = new Library(console);
+        library = new Library();
         isOpen = true;
         this.movies = new ArrayList<>(Arrays.asList(
                 new Movie("Movie_1", 1998, "Director_1", 9),

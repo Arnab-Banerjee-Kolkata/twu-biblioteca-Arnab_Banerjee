@@ -33,7 +33,7 @@ public class Menu {
         return this.menuOptions;
     }
 
-    public String enterOption(BibliotecaApp bibliotecaApp, Library library, int optionNumber) throws IOException {
+    public String enterOption(BibliotecaApp bibliotecaApp, Library library, int optionNumber) {
         message = new StringBuilder();
         switch (optionNumber) {
             case 1:
@@ -48,7 +48,7 @@ public class Menu {
                 formMessage();
                 break;
             case 4:
-                message.append(library.returnBook());
+                message.append(library.returnBook(null));
                 formMessage();
                 break;
             default:
