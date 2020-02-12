@@ -24,7 +24,7 @@ public class Menu {
         return this.menuOptions;
     }
 
-    public String enterOption(BibliotecaApp bibliotecaApp, Library library, int optionNumber) throws IOException {
+    public String enterOption(BibliotecaApp bibliotecaApp, Library library, MovieLibrary movieLibrary, int optionNumber) throws IOException {
         message = new StringBuilder();
         switch (optionNumber) {
             case 1:
@@ -45,7 +45,7 @@ public class Menu {
                 formMessage();
                 break;
             case 5:
-                message = new StringBuilder(bibliotecaApp.showMovies().toString());
+                message = new StringBuilder(movieLibrary.showMovies().toString());
                 formMessage();
                 break;
             default:
