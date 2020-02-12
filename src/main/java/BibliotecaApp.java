@@ -5,6 +5,7 @@ import java.io.PrintStream;
 
 public class BibliotecaApp {
 
+    private boolean isOpen;
     Menu menu;
     PrintStream outputStream;
     private Library library;
@@ -13,6 +14,7 @@ public class BibliotecaApp {
         menu = new Menu();
         this.outputStream = outputStream;
         library = new Library(outputStream);
+        isOpen = true;
     }
 
 
@@ -21,18 +23,18 @@ public class BibliotecaApp {
     }
 
     public void exit() {
-        System.exit(0);
+        isOpen = false;
     }
 
     public void startApp() throws IOException {
         showWelcomeMessage();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        while (true) {
+        do {
             outputStream.println("Enter your choice");
             outputStream.println(menu.getOptions());
             int choice = Integer.parseInt(bufferedReader.readLine());
             outputStream.println(menu.enterOption(this, library, choice));
-        }
+        } while (isOpen);
 
     }
 }

@@ -18,6 +18,4 @@ class BibliotecaAppTest {
         assertEquals("Welcome to Biblioteca." +
                 " Your one-stop-shop for great book titles in Bangalore!", welcomeMessage);
     }
-
-
 }
