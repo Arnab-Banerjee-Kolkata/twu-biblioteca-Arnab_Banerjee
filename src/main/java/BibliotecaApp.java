@@ -1,19 +1,27 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class BibliotecaApp {
 
     private boolean isOpen;
-    Menu menu;
+    private Menu menu;
     private Library library;
     private Console console;
+    private List<Movie> movies;
 
     public BibliotecaApp(Console console) {
         this.console = console;
         menu = new Menu();
         library = new Library(console);
         isOpen = true;
+        this.movies = new ArrayList<>(Arrays.asList(
+                new Movie("Movie_1", 1998, "Director_1", 9),
+                new Movie("Movie_2", 1987, "Director_2", 8.5)
+        ));
     }
 
 
@@ -35,5 +43,13 @@ public class BibliotecaApp {
             console.println(menu.enterOption(this, library, choice));
         } while (isOpen);
 
+    }
+
+    public String showMovies() {
+        String movieDetails = "";
+        for (Movie movie : movies) {
+            movieDetails += movie.getDetails() + "\n";
+        }
+        return movieDetails.trim();
     }
 }
