@@ -5,15 +5,27 @@ import java.util.List;
 
 public class Menu {
     private List<String> menuOptions;
-    StringBuilder message;
+    private StringBuilder message;
+    private Console console;
 
-    Menu() {
+    Menu(Console console) {
         menuOptions = new ArrayList<>(Arrays.asList(
                 "1. Show Available Books",
                 "2. Exit",
                 "3. Checkout",
                 "4. Return"
         ));
+        this.console = console;
+    }
+
+    private Book readBook() throws IOException {
+        console.println("Enter book title:");
+        String title = console.readLine();
+        console.println("Enter author name:");
+        String authorName = console.readLine();
+        console.println("Enter year of publishing:");
+        int yearOfPublishing = Integer.parseInt(console.readLine());
+        return new Book(title, authorName, yearOfPublishing);
     }
 
 
