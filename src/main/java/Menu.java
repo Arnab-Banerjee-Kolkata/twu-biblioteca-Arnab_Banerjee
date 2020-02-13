@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Menu {
@@ -10,6 +11,7 @@ public class Menu {
     private List<String> menuOptions;
     private StringBuilder message;
     private Console console;
+    private HashMap<Integer, MenuOption> functionMap;
 
     Menu(Console console, BibliotecaApp bibliotecaApp, BookLibrary bookLibrary, MovieLibrary movieLibrary) {
         this.bibliotecaApp = bibliotecaApp;
@@ -24,6 +26,8 @@ public class Menu {
                 "\n6. Checkout Movie"
         ));
         this.console = console;
+        functionMap = new HashMap<>();
+        functionMap.put(1, new ShowBooks(bookLibrary));
     }
 
     public List<String> getOptions() {
@@ -37,7 +41,7 @@ public class Menu {
         message = new StringBuilder();
         switch (optionNumber) {
             case 1:
-                message = new StringBuilder(bookLibrary.showItems().toString());
+                message = new StringBuilder(new ShowBooks(bookLibrary).execute());
                 formMessage();
                 break;
             case 2:
