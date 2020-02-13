@@ -50,7 +50,7 @@ public class Menu {
                 break;
             case 4:
                 book = console.readBook();
-                message.append(bookLibrary.returnItem(book));
+                message.append(new ReturnBook(bookLibrary, book).execute());
                 formMessage();
                 break;
             case 5:
