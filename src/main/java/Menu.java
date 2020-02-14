@@ -54,7 +54,7 @@ public class Menu {
                 formMessage();
                 break;
             case 5:
-                message = new StringBuilder(movieLibrary.showItems().toString());
+                message = new StringBuilder(new ShowMovies(movieLibrary).execute());
                 formMessage();
                 break;
             case 6:
