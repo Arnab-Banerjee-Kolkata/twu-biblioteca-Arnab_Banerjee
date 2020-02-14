@@ -59,7 +59,7 @@ public class Menu {
                 break;
             case 6:
                 Movie movie = new Movie("Movie_2", 1987, "Director_2", 8.5);
-                movieLibrary.checkOutItem(movie);
+                new CheckOutMovie(movieLibrary, movie).execute();
             default:
                 message = new StringBuilder("Please select a valid option!");
         }
